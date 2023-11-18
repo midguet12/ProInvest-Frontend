@@ -1,20 +1,28 @@
 import {obtenerTiposInversion} from "./controllers/tiposInversionController.js"
+import {obtenerConfiguracionSimulador} from "./controllers/configuracionSimuladorController.js"
 import {grafica} from "./grafica.js"
 const tiposInversiones = document.getElementById("tipos-inversiones");
 const numberMonto = document.getElementById("monto");
 const rangePlazo = document.getElementById("plazo");
 
-let numTiposInversionesSeleccionados = 1;
-
 let mapTiposInversiones= {}
 
 window.addEventListener("load", async function(){
-    mapTiposInversiones = await obtenerTiposInversion();
-    llenarLista();
-    graficarTipoInversion();
+    await llenarListaTiposInversion();
+    await configurarSimulador();
+    await graficarTipoInversion();
 });
 
-function llenarLista(){
+async function configurarSimulador(){
+    const configuracionSimulador = await obtenerConfiguracionSimulador();
+    numberMonto.max = configuracionSimulador.montoMaximo;
+    numberMonto.min = configuracionSimulador.montoMinimo;
+    rangePlazo.min = configuracionSimulador.plazoMinimo;
+    rangePlazo.max = configuracionSimulador.plazoMaximo;
+}
+
+async function llenarListaTiposInversion(){
+    mapTiposInversiones = await obtenerTiposInversion();
     let contador = 0 ;
     for (let key in mapTiposInversiones){
         let radioTipoInversion = document.createElement('input');
