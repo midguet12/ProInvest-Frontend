@@ -1,4 +1,5 @@
 import {obtenerTiposInversion} from "./controllers/tiposInversionController.js"
+import {grafica} from "./grafica.js"
 const tiposInversiones = document.getElementById("tipos-inversiones");
 const numberMonto = document.getElementById("monto");
 const rangePlazo = document.getElementById("plazo");
@@ -8,23 +9,25 @@ let numTiposInversionesSeleccionados = 1;
 let mapTiposInversiones= {}
 
 window.addEventListener("load", async function(){
-    //inicializarBotonSimularInversion();
     mapTiposInversiones = await obtenerTiposInversion();
     llenarLista();
     graficarTipoInversion();
 });
 
 function llenarLista(){
+    let contador = 0 ;
     for (let key in mapTiposInversiones){
-        let inputTipoInversion = document.createElement('input');
-        inputTipoInversion.setAttribute("id", mapTiposInversiones[key].nombre);
-        inputTipoInversion.setAttribute("type", "checkbox");
-        inputTipoInversion.setAttribute("autocomplete", "off");
-        inputTipoInversion.classList.add("btn-check");
-        tiposInversiones.appendChild(inputTipoInversion);
-
-        inputTipoInversion.addEventListener("click", ()=>{
-            manejarSeleccion(inputTipoInversion);
+        let radioTipoInversion = document.createElement('input');
+        radioTipoInversion.setAttribute("id", mapTiposInversiones[key].nombre);
+        radioTipoInversion.setAttribute("type", "radio");
+        radioTipoInversion.setAttribute("name", "tipos-inversion");
+        radioTipoInversion.setAttribute("autocomplete", "off");
+        radioTipoInversion.classList.add("btn-check");
+        tiposInversiones.appendChild(radioTipoInversion);
+        if (contador === 0){
+            radioTipoInversion.setAttribute("CHECKED", "");
+        }
+        radioTipoInversion.addEventListener("click", ()=>{
             graficarTipoInversion();
         });
 
@@ -35,112 +38,27 @@ function llenarLista(){
         labelTipoInversion.innerText = mapTiposInversiones[key].nombre;
 
         tiposInversiones.appendChild(labelTipoInversion);
+        contador++;
     }
 }
 
-function manejarSeleccion(inputTipoInversion){
-    if (estaSeleccionado(inputTipoInversion)){
-        inputTipoInversion.removeAttribute("CHECKED");
-        numTiposInversionesSeleccionados--;
-        if (numTiposInversionesSeleccionados === 3){
-            bloquearTiposInversion(false);
-        }
-    }else{
-        inputTipoInversion.setAttribute("CHECKED","");
-        numTiposInversionesSeleccionados++;
-        if (numTiposInversionesSeleccionados > 3){
-            bloquearTiposInversion(true);
-        }
-    }
-}
-
-function graficarTipoInversion(){
+function graficarTipoInversion(inputTipoInversion){
     grafica.data.datasets[0].data = [];
     grafica.data.labels = [];
-    const seleccion =
-        Array.from(tiposInversiones.children).filter(tipo => tipo.hasAttribute("CHECKED"));
-    seleccion.forEach((tipo) => {
-        let nombreInversion = tipo.getAttribute("id");
-        grafica.data.labels.push(nombreInversion);
-        let plazoEnAnios = Number(document.getElementById("plazo").value);
-        let inversionFinal = Number(document.getElementById("monto").value);
-        let tasa = mapTiposInversiones[nombreInversion].tasa;
-        for(let i = 0; i<plazoEnAnios; i++){
-            inversionFinal += inversionFinal * tasa;
-        }
-        grafica.data.datasets[0].data.push(inversionFinal);
-    });
+    const nombreTipoInversionSeleccionado =
+        Array.from(tiposInversiones.children)
+             .find(tipo => tipo.type === "radio" && tipo.checked)
+             .id;
+    const tipoInversion = mapTiposInversiones[nombreTipoInversionSeleccionado];
+    const plazo = document.getElementById("plazo").value;
+    let monto =  Number(document.getElementById("monto").value);
+    for (let i = 0; i < plazo; i++){
+        grafica.data.labels.push(`Año ${i+1}`);
+        monto += monto * tipoInversion.tasa;
+        grafica.data.datasets[0].data.push(monto);
+    }
     grafica.update();
 }
-
-function bloquearTiposInversion(bloquear){
-    for(let i = 0; i < tiposInversiones.children.length; i += 2){
-        if (!estaSeleccionado(tiposInversiones.children[i])){
-            if (bloquear){
-                tiposInversiones.children[i].setAttribute("DISABLED", "");
-            }else{
-                tiposInversiones.children[i].removeAttribute("DISABLED");
-            }
-        }
-    }
-}
-
-function estaSeleccionado(tipoInversion){
-    return tipoInversion.hasAttribute("CHECKED");
-}
-
-
-const bgColor = [
-    "#3FBEAF",
-    "#50C0FF",
-    "#C196E4",
-    "#A0EC71",
-];
-const data = {
-    datasets: [
-        {
-            label: 'Ganancias por tipo de inversion',
-            backgroundColor: bgColor
-        }
-    ]
-}
-
-const grafica = new Chart(
-    "grafica",
-    {
-        type: "bar",
-        data: data,
-        plugins: [ChartDataLabels],
-        options:{
-            responsive:true,
-            maintainAspectRatio: false,
-            scales:{
-                y:{
-                    type: "linear",
-                    beginAtZero: false
-                }
-            },
-            plugins:{
-                title:{
-                    display: false,
-                    text: "Ganancias",
-                },
-                legend:{
-                    display: false,
-                },
-                datalabels:{
-                    anchor: "end",
-                    clamp: true,
-                    align: "top",
-                    offset: 0,
-                    formatter: function (value, context){
-                        return "$" + new Intl.NumberFormat("es-MX").format(context.dataset.data[context.dataIndex]);
-                    }
-                }
-            }
-        }
-    }
-);
 
 numberMonto.addEventListener("change", (e) => {
     e.preventDefault();
