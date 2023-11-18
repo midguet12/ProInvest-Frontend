@@ -7,3 +7,4 @@ export async function obtenerTiposInversion() {
     tiposInversion.forEach(tipo => mapaTiposInversion[tipo.nombre] = tipo);
     return mapaTiposInversion;
 }
+
