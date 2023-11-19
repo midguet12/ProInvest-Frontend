@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProInvest</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="css/site.css"/>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <script defer src="js/components/bootstrap-input-spinner/bootstrap-input-spinner.js"></script>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+    <script defer src="https://kit.fontawesome.com/564645be40.js" crossorigin="anonymous"></script>
+
+    <script defer type="module" src="js/tiposInversion.js"></script>
+
+</head>
+<body>
+<nav >
+    <ul class="navbar-option-list ">
+        <li class="navbar-brand">
+            <a class="" href="#">ProInvest</a>
+        </li>
+        <li class="navbar-option nav-item">
+
+            <a href="index.html">
+                <i class="fa-solid fa-chart-simple"></i>
+                <p>Simular</p>
+            </a>
+        </li>
+        <li class="navbar-option nav-item">
+            <a href="comparar.html">
+                <i class="fa-solid fa-scale-balanced"></i>
+                <p>Comparar</p>
+            </a>
+        </li>
+        <li class="navbar-option nav-item">
+            <a href="#">
+                <i class="fa-solid fa-piggy-bank"></i>
+                <p>Invertir</p>
+            </a>
+        </li>
+        <li class="navbar-option nav-item">
+            <a href="#">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <p>Buscar</p>
+            </a>
+        </li>
+        <li class="navbar-option nav-item">
+            <a class="pestana-activa" href="configurar.html">
+                <i class="fa-solid fa-screwdriver-wrench"></i>
+                <p>Gerencia</p>
+            </a>
+        </li>
+    </ul>
+</nav>
+
+<div class="crop desktop-only">
+    <img src="img/handshake.jpg" alt="Un apreton de manos">
+</div>
+<div class="descripcion desktop-only">
+    <h3 class="titulo">Gerencia</h3>
+    <p class>Modifica los valores por defecto del simulador y los del formulario de solicitud de inversión.</p>
+</div>
+<div class="ajuste"></div>
+
+<div class="contenido">
+    <div class="nav-pills me-3 gerencia-tabs" role="tablist" aria-orientation="vertical">
+        <a href="configurar.html" class="btn nav-link" id="configuracion-tab"><i class="fa-solid fa-chart-simple"></i> Configuración del Simulador</a>
+        <a class="btn nav-link active" id="tipos-inversion-tab"><i class="fa-solid fa-dollar-sign"></i>   Tipos de Inversión</a>
+        <a class="btn nav-link" id="bancos-tab"><i class="fa-solid fa-building-columns"></i>   Bancos</a>
+        <a class="btn nav-link" id="origenes-tab"><i class="fa-solid fa-credit-card"></i>   Orígenes de Inversiones</a>
+        <a class="btn nav-link" id="credenciales-tab"><i class="fa-solid fa-user-gear"></i>   Credenciales</a>
+    </div>
+
+    <div class="gerencia-contenido">
+        <div  class="gerencia-descripcion">
+            <h5>Tipos de Inversión</h5>
+            <p>Modifica los valores permitidos en el simulador.</p>
+        </div>
+        <div class="gerencia-botones">
+            <button class="gerencia-boton btn btn-primary" id="guardar" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-circle-plus"></i>   <p>Agregar</p></button>
+<!--            <button class="btn btn-secondary" id="asdf">asdf</button>-->
+        </div>
+
+        <!-- Aqui va la tabla de tipos de inversion -->
+
+    </div>
+
+
+</div>
+
+<div class="modal fade"  data-bs-backdrop="static"  id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Nuevo Tipo de Inversión</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="post" class="needs-validation" novalidate>
+                <div class="modal-body">
+                        <p>Ingrese los datos del nuevo Tipo de Inversión</p>
+                        <div class="mb-3 has-validation">
+                            <label for="nombre-nuevo-tipo" class="col-form-label">Nombre</label>
+                            <input type="text" class="form-control" id="nombre-nuevo-tipo" pattern="^[a-zA-Z0-9 ]+$" required>
+                            <div class="invalid-feedback">
+                                Por favor ingrese un valor que sólo tenga letras y/o números.
+                            </div>
+                        </div>
+                        <div class="mb-3 has-validation">
+                            <label for="tasa-nuevo-tipo" class="col-form-label">Tasa de retorno</label>
+                            <input type="number" class="form-control" id="tasa-nuevo-tipo" min="0.01" max = "1" step = "0.01" value = "0.01" placeholder="ejemplo: 0.50" required/>
+                            <div class="invalid-feedback">
+                                Por favor ingrese un número decimal entre 0 y 1.
+                            </div>
+                        </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade"  data-bs-backdrop="static"  id="modal-error" tabindex="-1" aria-labelledby="modal-error-titulo" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header alert alert-danger">
+                <h5 class="modal-title" id="modal-error-titulo"><i class="fa-solid fa-triangle-exclamation"></i> Error</h5>
+            </div>
+            <div class="modal-body">
+                <p id="modal-error-mensaje"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <i class="fa-solid fa-circle-check"></i>
+            <strong class="me-auto" id="toast-mensaje">CETES agregado exitosamente.</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

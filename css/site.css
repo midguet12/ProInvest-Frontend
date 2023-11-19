@@ -124,7 +124,7 @@ li a p{
 }
 
 
-#gerencia-tabs{
+.gerencia-tabs{
     height: 60px;
     display: flex;
     flex-direction: row;
@@ -132,23 +132,24 @@ li a p{
     grid-column: 1 / span 3;
     overflow: auto;
     white-space: nowrap;
-
+    background-color: lightgray;
+    width: 100%;
 }
 
-#gerencia-tabs a {
+.gerencia-tabs a {
     padding: 20px;
 
 }
 
-#gerencia-tabs a:hover{
+.gerencia-tabs a:hover{
     background-color: lightgray;
 }
 
-#gerencia-tabs a:active{
+.gerencia-tabs a:active{
     background-color: dimgray;
 }
 
-#gerencia-contenido{
+.gerencia-contenido{
     height: 100%;
     grid-row: 2;
     grid-column: 1 / span 3;
@@ -169,7 +170,7 @@ li a p{
     justify-content: end;
 }
 
-#gerencia-descripcion{
+.gerencia-descripcion{
     font-size: 1rem;
     grid-row: 1;
 }
@@ -308,14 +309,14 @@ li a p{
         padding-left: 50px;
     }
 
-    #gerencia-contenido{
+    .gerencia-contenido{
         padding: 0;
         width: 100%;
         display: grid;
         grid-template-columns: 1fr 1fr auto;
     }
 
-    #gerencia-descripcion{
+    .gerencia-descripcion{
         grid-row: 1;
         grid-column: 1 / span 2;
     }
@@ -323,18 +324,23 @@ li a p{
     .gerencia-botones{
         grid-row: 1;
         grid-column: 3 / span 1;
+        max-height: 100px;
     }
+
 
     .gerencia-grupo-campos{
         grid-row: 2;
         grid-column: 1 / span 3;
     }
 
-    #gerencia-tabs{
+    .gerencia-tabs{
         flex-direction: column;
         height: 100%;
+        width: 30%;
         overflow: auto;
         white-space: normal;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
     }
 
 

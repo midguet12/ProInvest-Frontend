@@ -27,7 +27,7 @@
         </li>
         <li class="navbar-option nav-item">
 
-            <a href="#">
+            <a href="index.html">
                 <i class="fa-solid fa-chart-simple"></i>
                 <p>Simular</p>
             </a>
@@ -51,7 +51,7 @@
             </a>
         </li>
         <li class="navbar-option nav-item">
-            <a class="pestana-activa" href="#">
+            <a class="pestana-activa" href="configurar.html">
                 <i class="fa-solid fa-screwdriver-wrench"></i>
                 <p>Gerencia</p>
             </a>
@@ -69,18 +69,18 @@
 <div class="ajuste"></div>
 
 <div class="contenido">
-    <div class="nav-pills me-3" id="gerencia-tabs" role="tablist" aria-orientation="vertical">
-        <a class="btn nav-link active" id="configuracion-tab"><i class="fa-solid fa-chart-simple"></i> Configuración del Simulador</a>
-        <a class="btn nav-link" id="tipos-inversion-tab"><i class="fa-solid fa-dollar-sign"></i>   Tipos de Inversión</a>
+    <div class="nav-pills me-3 gerencia-tabs" role="tablist" aria-orientation="vertical">
+        <a  class="btn nav-link active" id="configuracion-tab"><i class="fa-solid fa-chart-simple"></i> Configuración del Simulador</a>
+        <a href="tiposInversion.html" class="btn nav-link" id="tipos-inversion-tab"><i class="fa-solid fa-dollar-sign"></i>   Tipos de Inversión</a>
         <a class="btn nav-link" id="bancos-tab"><i class="fa-solid fa-building-columns"></i>   Bancos</a>
         <a class="btn nav-link" id="origenes-tab"><i class="fa-solid fa-credit-card"></i>   Orígenes de Inversiones</a>
         <a class="btn nav-link" id="credenciales-tab"><i class="fa-solid fa-user-gear"></i>   Credenciales</a>
     </div>
 
-        <form id="gerencia-contenido" method="post" class = "needs-validation" novalidate>
+        <form class="gerencia-contenido" method="post" class = "needs-validation" novalidate>
 
 
-            <div  id="gerencia-descripcion">
+            <div  class="gerencia-descripcion">
                 <h5>Configuración del Simulador</h5>
                 <p>Modifica los valores permitidos en el simulador.</p>
             </div>
