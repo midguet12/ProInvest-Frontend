@@ -66,7 +66,7 @@ li a p{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     background-color: white;
-
+    align-content: start;
 }
 .grafica-contenedor{
     padding: 30px 30px 0 30px;
@@ -121,6 +121,78 @@ li a p{
 
 .desktop-only{
     display: none;
+}
+
+
+#gerencia-tabs{
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    grid-row: 1;
+    grid-column: 1 / span 3;
+    overflow: auto;
+    white-space: nowrap;
+
+}
+
+#gerencia-tabs a {
+    padding: 20px;
+
+}
+
+#gerencia-tabs a:hover{
+    background-color: lightgray;
+}
+
+#gerencia-tabs a:active{
+    background-color: dimgray;
+}
+
+#gerencia-contenido{
+    height: 100%;
+    grid-row: 2;
+    grid-column: 1 / span 3;
+    padding: 30px;
+    display: grid;
+}
+
+.gerencia-campo{
+    padding-bottom: 10px;
+
+}
+
+
+.gerencia-botones{
+    grid-row: 3;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+}
+
+#gerencia-descripcion{
+    font-size: 1rem;
+    grid-row: 1;
+}
+
+.gerencia-grupo-campos{
+    grid-row: 2;
+}
+
+.gerencia-botones .btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    align-content: center;
+}
+
+.gerencia-boton i {
+    font-size: 1.2rem;
+}
+
+.gerencia-boton p {
+    font-size: 0.6rem;
 }
 
 @media (min-width: 992px) {
@@ -217,11 +289,12 @@ li a p{
 
 
     .contenido{
-        padding: 50px 150px;
+        padding: 80px 150px;
         width: 100%;
         height: 100%;
         display: flex;
         flex-direction: row;
+
     }
 
     .controles{
@@ -234,4 +307,40 @@ li a p{
         height: 90%;
         padding-left: 50px;
     }
+
+    #gerencia-contenido{
+        padding: 0;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr auto;
+    }
+
+    #gerencia-descripcion{
+        grid-row: 1;
+        grid-column: 1 / span 2;
+    }
+
+    .gerencia-botones{
+        grid-row: 1;
+        grid-column: 3 / span 1;
+    }
+
+    .gerencia-grupo-campos{
+        grid-row: 2;
+        grid-column: 1 / span 3;
+    }
+
+    #gerencia-tabs{
+        flex-direction: column;
+        height: 100%;
+        overflow: auto;
+        white-space: normal;
+    }
+
+
+    .gerencia-campo{
+        padding: 15px;
+    }
+
+
 }

@@ -10,7 +10,7 @@ let mapTiposInversiones= {}
 window.addEventListener("load", async function(){
     await llenarListaTiposInversion();
     await configurarSimulador();
-    await graficarTipoInversion();
+    await simular();
 });
 
 async function configurarSimulador(){
@@ -36,7 +36,7 @@ async function llenarListaTiposInversion(){
             radioTipoInversion.setAttribute("CHECKED", "");
         }
         radioTipoInversion.addEventListener("click", ()=>{
-            graficarTipoInversion();
+            simular();
         });
 
         let labelTipoInversion = document.createElement("label");
@@ -50,7 +50,7 @@ async function llenarListaTiposInversion(){
     }
 }
 
-function graficarTipoInversion(inputTipoInversion){
+function simular(inputTipoInversion){
     grafica.data.datasets[0].data = [];
     grafica.data.labels = [];
     const nombreTipoInversionSeleccionado =
@@ -71,11 +71,11 @@ function graficarTipoInversion(inputTipoInversion){
 numberMonto.addEventListener("change", (e) => {
     e.preventDefault();
     sessionStorage.setItem("monto", numberMonto.value);
-    graficarTipoInversion();
+    simular();
 });
 
 rangePlazo.addEventListener("change", (e) =>{
     e.preventDefault();
     sessionStorage.setItem("plazo", rangePlazo.value);
-    graficarTipoInversion();
+    simular();
 });
