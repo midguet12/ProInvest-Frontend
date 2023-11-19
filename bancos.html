@@ -18,7 +18,7 @@
 
     <script defer src="https://kit.fontawesome.com/564645be40.js" crossorigin="anonymous"></script>
 
-    <script defer type="module" src="js/tiposInversion.js"></script>
+    <script defer type="module" src="js/bancos.js"></script>
     <script defer type="module" src="js/manejadorMensajes.js"></script>
 
 </head>
@@ -74,8 +74,8 @@
 <div class="contenido">
     <div class="nav-pills me-3 gerencia-tabs" role="tablist" aria-orientation="vertical">
         <a href="configurar.html" class="btn nav-link" id="configuracion-tab"><i class="fa-solid fa-chart-simple"></i> Configuración del Simulador</a>
-        <a class="btn nav-link active" id="tipos-inversion-tab"><i class="fa-solid fa-dollar-sign"></i>   Tipos de Inversión</a>
-        <a href="bancos.html" class="btn nav-link" id="bancos-tab"><i class="fa-solid fa-building-columns"></i>   Bancos</a>
+        <a href="tiposInversion.html" class="btn nav-link" id="tipos-inversion-tab"><i class="fa-solid fa-dollar-sign"></i>   Tipos de Inversión</a>
+        <a class="btn nav-link active" id="bancos-tab"><i class="fa-solid fa-building-columns"></i>   Bancos</a>
         <a href="origenesFondos.html" class="btn nav-link" id="origenes-tab"><i class="fa-solid fa-credit-card"></i>   Orígenes de Inversiones</a>
         <a class="btn nav-link" id="documentos-tab"><i class="fa-regular fa-folder-open"></i>   Documentos de la Solicitud</a>
         <a class="btn nav-link" id="credenciales-tab"><i class="fa-solid fa-user-gear"></i>   Credenciales</a>
@@ -83,8 +83,8 @@
 
     <div class="gerencia-contenido">
         <div  class="gerencia-descripcion">
-            <h5>Tipos de Inversión</h5>
-            <p>Modifica los valores permitidos en el simulador.</p>
+            <h5><i class="fa-solid fa-building-columns"></i>  Bancos</h5>
+            <p>Registre o modifique los <strong>Bancos</strong> disponibles en el formulario de solicitud de inversión.</p>
         </div>
         <div class="gerencia-botones">
             <button class="gerencia-boton btn btn-primary" id="guardar" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-circle-plus"></i>   <p>Agregar</p></button>
@@ -102,24 +102,17 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Nuevo Tipo de Inversión</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Nuevo Banco</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form method="post" class="needs-validation" novalidate>
                 <div class="modal-body">
-                        <p>Ingrese los datos del nuevo Tipo de Inversión</p>
+                        <p>Ingrese los datos del nuevo Banco</p>
                         <div class="mb-3 has-validation">
                             <label for="nombre-nuevo-tipo" class="col-form-label">Nombre</label>
                             <input type="text" class="form-control" id="nombre-nuevo-tipo" pattern="^[a-zA-Z0-9 ]+$" required>
                             <div class="invalid-feedback">
                                 Por favor ingrese un valor que sólo tenga letras y/o números.
-                            </div>
-                        </div>
-                        <div class="mb-3 has-validation">
-                            <label for="tasa-nuevo-tipo" class="col-form-label">Tasa de retorno</label>
-                            <input type="number" class="form-control" id="tasa-nuevo-tipo" min="0.01" max = "1" step = "0.01" value = "0.01" placeholder="ejemplo: 0.50" required/>
-                            <div class="invalid-feedback">
-                                Por favor ingrese un número decimal entre 0 y 1.
                             </div>
                         </div>
 

@@ -132,7 +132,7 @@ li a p{
     grid-column: 1 / span 3;
     overflow: auto;
     white-space: nowrap;
-    background-color: lightgray;
+    background-color: gainsboro;
     width: 100%;
 }
 
@@ -195,6 +195,7 @@ li a p{
 .gerencia-boton p {
     font-size: 0.6rem;
 }
+
 
 @media (min-width: 992px) {
     .desktop-only{
