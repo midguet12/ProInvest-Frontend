@@ -16,7 +16,7 @@ window.addEventListener("load", async function(){
 });
 
 async function configurarSimulador(){
-    const configuracionSimulador = await obtenerConfiguracionSimulador();
+    const configuracionSimulador = await (await obtenerConfiguracionSimulador()).json();
     numberMonto.max = configuracionSimulador.montoMaximo;
     numberMonto.min = configuracionSimulador.montoMinimo;
     rangePlazo.min = configuracionSimulador.plazoMinimo;
