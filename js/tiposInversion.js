@@ -1,6 +1,6 @@
 import {registrarTiposInversion} from "./controllers/tiposInversionController.js";
-import {validar} from "./validador.js";
-import {manejar} from "./manejadorMensajes.js";
+import {validar} from "./components/validador.js";
+import {manejarRespuesta} from "./components/manejadorMensajes.js";
 
 addEventListener("submit", async () => {
     const nombre = document.getElementById("nombre-nuevo-tipo").value;
@@ -9,13 +9,9 @@ addEventListener("submit", async () => {
         "tasa": document.getElementById("tasa-nuevo-tipo").value,
     });
 
-    await manejar(respuesta);
+    manejarRespuesta(respuesta);
 });
 
 (function () {
     validar();
 })();
-
-// document.getElementById("asdf").addEventListener("click", () => {
-//     $("#modal-error").modal("show")
-// })

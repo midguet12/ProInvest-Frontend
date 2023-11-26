@@ -19,7 +19,7 @@
     <script defer src="https://kit.fontawesome.com/564645be40.js" crossorigin="anonymous"></script>
 
     <script defer type="module" src="js/bancos.js"></script>
-    <script defer type="module" src="js/manejadorMensajes.js"></script>
+    <script defer type="module" src="js/components/manejadorMensajes.js"></script>
 
 </head>
 <body>
@@ -30,33 +30,39 @@
         </li>
         <li class="navbar-option nav-item">
 
-            <a href="index.html">
+            <a href="configurar.html">
                 <i class="fa-solid fa-chart-simple"></i>
-                <p>Simular</p>
+                <p>Simulador</p>
             </a>
         </li>
         <li class="navbar-option nav-item">
-            <a href="comparar.html">
+            <a href="tiposInversion.html">
                 <i class="fa-solid fa-scale-balanced"></i>
-                <p>Comparar</p>
+                <p>Inversiones</p>
             </a>
         </li>
         <li class="navbar-option nav-item">
-            <a href="#">
-                <i class="fa-solid fa-piggy-bank"></i>
-                <p>Invertir</p>
+            <a class="pestana-activa" href="bancos.html">
+                <i class="fa-solid fa-building-columns"></i>
+                <p>Bancos</p>
             </a>
         </li>
         <li class="navbar-option nav-item">
-            <a href="#">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <p>Buscar</p>
+            <a href="origenesFondos.html">
+                <i class="fa-solid fa-credit-card"></i>
+                <p>Orígenes</p>
             </a>
         </li>
         <li class="navbar-option nav-item">
-            <a class="pestana-activa" href="configurar.html">
-                <i class="fa-solid fa-screwdriver-wrench"></i>
-                <p>Gerencia</p>
+            <a href="configurar.html">
+                <i class="fa-regular fa-folder-open"></i>
+                <p>Documentos</p>
+            </a>
+        </li>
+        <li class="navbar-option nav-item">
+            <a href="configurar.html">
+                <i class="fa-solid fa-user-tie"></i>
+                <p>Gerente</p>
             </a>
         </li>
     </ul>
@@ -72,15 +78,6 @@
 <div class="ajuste"></div>
 
 <div class="contenido">
-    <div class="nav-pills me-3 gerencia-tabs" role="tablist" aria-orientation="vertical">
-        <a href="configurar.html" class="btn nav-link" id="configuracion-tab"><i class="fa-solid fa-chart-simple"></i> Configuración del Simulador</a>
-        <a href="tiposInversion.html" class="btn nav-link" id="tipos-inversion-tab"><i class="fa-solid fa-dollar-sign"></i>   Tipos de Inversión</a>
-        <a class="btn nav-link active" id="bancos-tab"><i class="fa-solid fa-building-columns"></i>   Bancos</a>
-        <a href="origenesFondos.html" class="btn nav-link" id="origenes-tab"><i class="fa-solid fa-credit-card"></i>   Orígenes de Inversiones</a>
-        <a class="btn nav-link" id="documentos-tab"><i class="fa-regular fa-folder-open"></i>   Documentos de la Solicitud</a>
-        <a class="btn nav-link" id="credenciales-tab"><i class="fa-solid fa-user-gear"></i>   Credenciales</a>
-    </div>
-
     <div class="gerencia-contenido">
         <div  class="gerencia-descripcion">
             <h5><i class="fa-solid fa-building-columns"></i>  Bancos</h5>
