@@ -1,6 +1,6 @@
 import {registrarBancos} from "./controllers/bancosController.js";
-import {validar} from "./validador.js";
-import {manejar} from "./manejadorMensajes.js";
+import {validar} from "./components/validador.js";
+import {mostrarToast,mostrarError, manejarRespuesta} from "./components/manejadorMensajes.js";
 
 addEventListener("submit", async () => {
 
@@ -8,7 +8,8 @@ addEventListener("submit", async () => {
     const respuesta = await registrarBancos({
         "nombre":nombre,
     });
-    await manejar(respuesta);
+    manejarRespuesta(respuesta);
+
 });
 
 (function () {

@@ -41,11 +41,11 @@ li a{
     text-decoration: none;
     padding: 15px;
     color: white;
-    font-size: 4vw;
+    font-size: 1rem;
 }
 
 li a p{
-    font-size: 3vw;
+    font-size: 0.4rem;
     padding: 0;
     margin: 0;
 }
@@ -60,12 +60,11 @@ li a p{
 }
 
 .contenido{
-    /* background-color: blueviolet; */
+    background-color: white;
     grid-row: 1;
     height: 100%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    background-color: white;
     align-content: start;
 }
 .grafica-contenedor{
@@ -82,7 +81,6 @@ li a p{
 }
 .controles{
     /*background-color: yellow;*/
-    background-color: lightgray;
     grid-column: 1 / span 3;
     display: flex;
     flex-direction: column;

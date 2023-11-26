@@ -15,7 +15,7 @@
 
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script defer type="module" src="js/configurar.js"></script>
-    <script defer type="module" src="js/validador.js"></script>
+    <script defer type="module" src="js/components/validador.js"></script>
 
     <script src="https://kit.fontawesome.com/564645be40.js" crossorigin="anonymous"></script>
 </head>
@@ -27,35 +27,43 @@
         </li>
         <li class="navbar-option nav-item">
 
-            <a href="index.html">
-                <i class="fa-solid fa-chart-simple"></i>
-                <p>Simular</p>
-            </a>
-        </li>
-        <li class="navbar-option nav-item">
-            <a href="comparar.html">
-                <i class="fa-solid fa-scale-balanced"></i>
-                <p>Comparar</p>
-            </a>
-        </li>
-        <li class="navbar-option nav-item">
-            <a href="#">
-                <i class="fa-solid fa-piggy-bank"></i>
-                <p>Invertir</p>
-            </a>
-        </li>
-        <li class="navbar-option nav-item">
-            <a href="#">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <p>Buscar</p>
-            </a>
-        </li>
-        <li class="navbar-option nav-item">
             <a class="pestana-activa" href="configurar.html">
-                <i class="fa-solid fa-screwdriver-wrench"></i>
-                <p>Gerencia</p>
+                <i class="fa-solid fa-chart-simple"></i>
+                <p>Simulador</p>
             </a>
         </li>
+        <li class="navbar-option nav-item">
+            <a href="tiposInversion.html">
+                <i class="fa-solid fa-scale-balanced"></i>
+                <p>Inversiones</p>
+            </a>
+        </li>
+        <li class="navbar-option nav-item">
+            <a href="bancos.html">
+                <i class="fa-solid fa-building-columns"></i>
+                <p>Bancos</p>
+            </a>
+        </li>
+        <li class="navbar-option nav-item">
+            <a href="origenesFondos.html">
+                <i class="fa-solid fa-credit-card"></i>
+                <p>Orígenes</p>
+            </a>
+        </li>
+        <li class="navbar-option nav-item">
+            <a href="configurar.html">
+                <i class="fa-regular fa-folder-open"></i>
+                <p>Documentos</p>
+            </a>
+        </li>
+        <li class="navbar-option nav-item">
+            <a href="configurar.html">
+                <i class="fa-solid fa-user-tie"></i>
+                <p>Gerente</p>
+            </a>
+        </li>
+
+
     </ul>
 </nav>
 
@@ -69,44 +77,35 @@
 <div class="ajuste"></div>
 
 <div class="contenido">
-    <div class="nav-pills me-3 gerencia-tabs" role="tablist" aria-orientation="vertical">
-        <a  class="btn nav-link active" id="configuracion-tab"><i class="fa-solid fa-chart-simple"></i> Configuración del Simulador</a>
-        <a href="tiposInversion.html" class="btn nav-link" id="tipos-inversion-tab"><i class="fa-solid fa-dollar-sign"></i>   Tipos de Inversión</a>
-        <a href="bancos.html" class="btn nav-link" id="bancos-tab"><i class="fa-solid fa-building-columns"></i>   Bancos</a>
-        <a href="origenesFondos.html" class="btn nav-link" id="origenes-tab"><i class="fa-solid fa-credit-card"></i>   Orígenes de Inversiones</a>
-        <a class="btn nav-link" id="documentos-tab"><i class="fa-regular fa-folder-open"></i>   Documentos de la Solicitud</a>
-        <a class="btn nav-link" id="credenciales-tab"><i class="fa-solid fa-user-gear"></i>   Credenciales</a>
-    </div>
-
         <form class="gerencia-contenido" method="post" class = "needs-validation" novalidate>
 
 
             <div  class="gerencia-descripcion">
-                <h5>Configuración del Simulador</h5>
+                <h5><i class="fa-solid fa-chart-simple"></i> Configuración del Simulador</h5>
                 <p>Modifica los valores permitidos en el simulador.</p>
             </div>
             <div class="gerencia-botones">
-                <button class="gerencia-boton btn btn-primary" id="guardar"><i class="fa-solid fa-floppy-disk"></i>   <p>Guardar</p></button>
-                <button class="gerencia-boton btn btn-secondary " id="reestablecer"><i class="fa-solid fa-rotate-left"></i> <p>Reestablecer</p></button>
+                <button class="gerencia-boton btn btn-primary" id="guardar" disabled><i class="fa-solid fa-floppy-disk"></i>   <p>Guardar</p></button>
+                <button class="gerencia-boton btn btn-secondary " id="reestablecer" disabled><i class="fa-solid fa-rotate-left"></i> <p>Reestablecer</p></button>
             </div>
 
             <div class="gerencia-grupo-campos">
                 <div class="gerencia-campo form-group col has-validation">
                     <label class="form-label" for="monto-minimo">Monto mínimo:</label>
-                    <input type="number" class="form-control" id="monto-minimo" placeholder="ejemplo: 10000" min = 10000 step = 10000>
+                    <input type="number" class="form-control" id="monto-minimo" placeholder="ejemplo: 10000" min = 10000 step = 10000 disabled>
 
                 </div>
                 <div class="gerencia-campo form-group col">
                     <label class="form-label" for="monto-maximo">Monto máximo:</label>
-                    <input type="number" class="form-control" id="monto-maximo" placeholder="ejemplo: 10000000" step = 10000>
+                    <input type="number" class="form-control" id="monto-maximo" placeholder="ejemplo: 10000000" step = 10000 disabled>
                 </div>
                 <div class="gerencia-campo form-group col">
                     <label class="form-label" for="plazo-minimo">Plazo mínimo:</label>
-                    <input type="number" class="form-control" id="plazo-minimo" placeholder="ejemplo: 1" min = 1 step = 1>
+                    <input type="number" class="form-control" id="plazo-minimo" placeholder="ejemplo: 1" min = 1 step = 1 disabled>
                 </div>
                 <div class="gerencia-campo form-group col">
                     <label class="form-label" for="plazo-maximo">Plazo máximo:</label>
-                    <input type="number" class="form-control" id="plazo-maximo" placeholder="ejemplo: 4" step = 1>
+                    <input type="number" class="form-control" id="plazo-maximo" placeholder="ejemplo: 4" step = 1 disabled>
                 </div>
             </div>
 
@@ -115,6 +114,16 @@
 
 </div>
 
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <i class="fa-solid fa-circle-check"></i>
+            <strong class="me-auto" id="toast-mensaje">CETES agregado exitosamente.</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
