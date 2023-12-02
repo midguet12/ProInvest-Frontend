@@ -16,18 +16,16 @@ export async function obtenerConfiguracionSimulador() {
 
 export async function actualizarConfiguracionSimulador(nuevaConfiguracion){
     const url='http://localhost:3000/configuracionSimulador';
-    try {
-        const response = await fetch(url, {
-            method: "PUT",
-            headers: {
-                "Content-type": "application/json",
-            },
-            body: JSON.stringify(nuevaConfiguracion)
-        });
-        return response.statusCode;
-    }catch (error){
-        console.log("hola");
-    }
+
+    return await fetch(url, {
+        method: "PUT",
+        headers: {
+            "Content-type": "application/json",
+        },
+        body: JSON.stringify(nuevaConfiguracion)
+    });
+
+
 }
 
 export async function reestablecerValores() {
