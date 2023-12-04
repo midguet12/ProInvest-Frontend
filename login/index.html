@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar sesión - ProInvest</title>
+
+    <link rel="stylesheet" href="../css/site.css">
+    <link rel="stylesheet" href="styles.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="js/components/bootstrap-input-spinner/bootstrap-input-spinner.js"></script>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/564645be40.js" crossorigin="anonymous"></script>
+    <script defer src="iniciarsesion.js"></script>
+
+</head>
+<body>
+    <nav>
+        <ul class="navbar-option-list ">
+            <li class="navbar-brand">
+                <a class="" href="#">ProInvest</a>
+            </li>
+            <li class="navbar-option nav-item">
+    
+                <a href="#">
+                    <i class="fa-solid fa-chart-simple"></i>
+                    <p>Simular</p>
+                </a>
+            </li>
+            <li class="navbar-option nav-item">
+                <a href="comparar.html">
+                    <i class="fa-solid fa-scale-balanced"></i>
+                    <p>Comparar</p>
+                </a>
+            </li>
+            <li class="navbar-option nav-item">
+                <a href="#">
+                    <i class="fa-solid fa-piggy-bank"></i>
+                    <p>Invertir</p>
+                </a>
+            </li>
+            <li class="navbar-option nav-item">
+                <a href="#">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <p>Buscar</p>
+                </a>
+            </li>
+            <li class="navbar-option nav-item">
+                <a class="pestana-activa" href="login/index.html">
+                    <i class="bi bi-person-fill"></i>
+                    <p>Iniciar sesión</p>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="crop desktop-only">
+        <img src="../img/iniciarsesion.jpg" alt="Un apreton de manos">
+    </div>
+
+    <div class="descripcion desktop-only">
+        <h3 class="titulo">Iniciar sesión</h3>
+    </div>
+
+    <div class="contenido formulario">
+        <form>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Correo electrónico</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingresa tu correo electrónico">
+              <small id="emailHelp" class="form-text text-muted">Nunca compartiremos tu correo con nadie.</small>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Contraseña</label>
+              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Contraseña">
+            </div>
+            <div class="form-group form-check">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1">Recordar contraseña</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+          </form>
+    </div>
+
+   
+</body>
+</html>
