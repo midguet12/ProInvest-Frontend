@@ -2,6 +2,8 @@ const correoElectronicoInput = document.getElementById('correoElectronicoInput')
 const contrasenaInput = document.getElementById('contrasenaInput');
 const iniciarSesionButton = document.getElementById("iniciarSesionButton");
 
+let prueba;
+
 //window.localStorage.setItem("key", "token");
 
 
@@ -9,8 +11,7 @@ iniciarSesionButton.onclick = async function(){
     const contrasenaCifrada = await hash( correoElectronicoInput.value + contrasenaInput.value);
 
     iniciarSesion(correoElectronicoInput.value, contrasenaCifrada);
-    
-    console.log(window.localStorage.getItem("profile"));
+
 }
 
 async function hash(input){
@@ -32,9 +33,34 @@ function iniciarSesion(correoElectronico, contrasenaCifrada){
 
     xhr.onreadystatechange = function () {
         if (xhr.status == 201 &&  xhr.readyState == 4) {  
-            let responseJson = JSON.parse(xhr.responseText);
-            //document.cookie = responseJson.stringify;
-            window.localStorage.setItem("profile", responseJson.stringify);
+            //let responseJson = JSON.parse(xhr.responseText);
+            //window.localStorage.setItem("profile", xhr.responseText);
+
+            let redirectUrl = "../profile/index.html";
+
+            let responseJSON = JSON.parse(xhr.responseText);
+            let token = responseJSON.token;
+            let correoElectronico = responseJSON.correoElectronico;
+
+            if (token != null) {
+                //window.localStorage.clear();
+                window.localStorage.setItem("token", token);
+                window.localStorage.setItem("correoElectronico", correoElectronico);
+                window.location.href = redirectUrl;
+
+            } 
+            //window.location.href="../profile/index.html"
+            /*fetch(redirectUrl,{
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+            .then(() =>{
+                window.location.href = redirectUrl;
+            })
+            .catch((error) => {
+                console.error(error);
+            });*/
         }else{
             console.log(`Error: ${xhr.status}`);
         }
@@ -47,4 +73,3 @@ function iniciarSesion(correoElectronico, contrasenaCifrada){
 
     xhr.send(body);
 }
-
