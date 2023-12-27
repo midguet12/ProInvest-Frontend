@@ -85,29 +85,38 @@
         </div>
         <div class="gerencia-botones">
             <button class="gerencia-boton btn btn-primary" id="guardar" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-circle-plus"></i>   <p>Agregar</p></button>
-<!--            <button class="btn btn-secondary" id="asdf">asdf</button>-->
         </div>
 
-        <!-- Aqui va la tabla de tipos de inversion -->
+<!--    Ejemplo de tabla para consultar los registros, necesaria para hacer mi CU de actualizar Bancos: -- alejandro
 
+        <table id="tabla" class="table table-hover">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Opciones</th>
+            </tr>
+            </thead>
+            <tbody id="tablaCuerpo">
+            </tbody>
+        </table>
+-->
     </div>
-
-
 </div>
 
 <div class="modal fade"  data-bs-backdrop="static"  id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Nuevo Banco</h5>
+                <h5 class="modal-title" id="modal-label">Nuevo Banco</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form method="post" class="needs-validation" novalidate>
+            <form id="modal-form" method="post" class="needs-validation" novalidate>
                 <div class="modal-body">
-                        <p>Ingrese los datos del nuevo Banco</p>
+                        <p id="modal-instrucciones">Ingrese los datos del nuevo Banco</p>
                         <div class="mb-3 has-validation">
-                            <label for="nombre-nuevo-tipo" class="col-form-label">Nombre</label>
-                            <input type="text" class="form-control" id="nombre-nuevo-tipo" pattern="^[a-zA-Z0-9 ]+$" required>
+                            <label for="nombre-nuevo-banco" class="col-form-label">Nombre</label>
+                            <input type="text" class="form-control" id="nombre-nuevo-banco" pattern="^[a-zA-Z0-9 ]+$" required>
                             <div class="invalid-feedback">
                                 Por favor ingrese un valor que sólo tenga letras y/o números.
                             </div>
