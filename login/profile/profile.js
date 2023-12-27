@@ -1,14 +1,9 @@
 const correoElectronicoP = document.getElementById("correoElectronico");
 const nombresP = document.getElementById("nombreP");
 const apellidosP = document.getElementById("apellidosP");
-const rfcP = document.getElementById("rfc");
 const fechaNacimientoP = document.getElementById("fecha-nacimiento");
-const gradoAcademicoP = document.getElementById("grado-academico");
-const profesionP = document.getElementById("profesion");
-const empresaP = document.getElementById("empresa");
 const celularP = document.getElementById("celular");
-const cuentaP = document.getElementById("cuenta");
-const clabeP = document.getElementById("clabe");
+const tituloH3 = document.getElementById("titulo");
 
 const correoElectronico = window.localStorage.getItem("correoElectronico");
 const token = window.localStorage.getItem("token");
@@ -24,7 +19,7 @@ apellidosP.innerHTML += " " + respuesta.apellidoPaterno + " " + respuesta.apelli
 
 
 async function obtenerUsuario(correoElectronico, token){
-    const urlServidor = "http://localhost:3000/obtenerusuario";
+    const urlServidor = "http://localhost:3000/obtenergerente";
     const respuesta = await fetch(urlServidor, {
         method: "POST",
         mode: "cors", // no-cors, *cors, same-origin
@@ -40,18 +35,15 @@ async function obtenerUsuario(correoElectronico, token){
     });
    
     const respuestaJSON = await respuesta.json();
-    
-    console.log(respuestaJSON)
 
+
+    tituloH3.innerHTML = "Bievenido " + respuestaJSON.nombres;
     correoElectronicoP.innerHTML += " " + correoElectronico;
     nombresP.innerHTML += " " + respuestaJSON.nombres;
     apellidosP.innerHTML += " " + respuestaJSON.apellidoPaterno + " " + respuestaJSON.apellidoMaterno;
-    rfcP.innerHTML += " " + respuestaJSON.rfc;
     fechaNacimientoP.innerHTML += " " + respuestaJSON.fechaNacimiento;
-    gradoAcademicoP.innerHTML += " " + respuestaJSON.gradoAcademico;
-    profesionP.innerHTML += " " + respuestaJSON.profesion;
-    empresaP.innerHTML += " " + respuestaJSON.empresa;
+
+
+
     celularP.innerHTML += " " + respuestaJSON.celular;
-    cuentaP.innerHTML += " " + respuestaJSON.cuenta;
-    clabeP.innerHTML += " " + respuestaJSON.clabe;
 }

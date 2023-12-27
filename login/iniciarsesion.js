@@ -1,6 +1,7 @@
 const correoElectronicoInput = document.getElementById('correoElectronicoInput');
 const contrasenaInput = document.getElementById('contrasenaInput');
 const iniciarSesionButton = document.getElementById("iniciarSesionButton");
+const mensajeroP = document.getElementById('mensajero');
 
 let prueba;
 
@@ -33,10 +34,7 @@ function iniciarSesion(correoElectronico, contrasenaCifrada){
 
     xhr.onreadystatechange = function () {
         if (xhr.status == 201 &&  xhr.readyState == 4) {  
-            //let responseJson = JSON.parse(xhr.responseText);
-            //window.localStorage.setItem("profile", xhr.responseText);
-
-            let redirectUrl = "../profile/index.html";
+            let redirectUrl = "profile/index.html";
 
             let responseJSON = JSON.parse(xhr.responseText);
             let token = responseJSON.token;
@@ -49,19 +47,26 @@ function iniciarSesion(correoElectronico, contrasenaCifrada){
                 window.location.href = redirectUrl;
 
             } 
-            //window.location.href="../profile/index.html"
-            /*fetch(redirectUrl,{
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                }
-            })
-            .then(() =>{
-                window.location.href = redirectUrl;
-            })
-            .catch((error) => {
-                console.error(error);
-            });*/
-        }else{
+        } else if(xhr.status == 404 && xhr.readyState == 4){
+          console.log("Correo no existe");
+          correoElectronicoInput.style.borderColor = 'red';
+          mensajeroP.innerHTML = "Correo no se encuentra registrado";
+
+            setTimeout(()=>{
+                correoElectronicoInput.style.borderColor = 'black';
+                mensajeroP.innerHTML = " ";
+            },1000 * 2);
+          
+        } else if (xhr.status == 401 && xhr.readyState == 4) {
+            console.log("Contraseña incorrecta");
+            contrasenaInput.style.borderColor = 'red';
+            mensajeroP.innerHTML = "Contraseña incorrecta"
+
+            setTimeout(()=>{
+                contrasenaInput.style.borderColor = 'black';
+                mensajeroP.innerHTML = " ";
+            },1000 * 2);
+        } else {
             console.log(`Error: ${xhr.status}`);
         }
     };
