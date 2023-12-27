@@ -202,6 +202,9 @@ li a p{
     font-size: 0.6rem;
 }
 
+.intangible {
+    pointer-events: none;
+}
 
 @media (min-width: 992px) {
     .desktop-only{
