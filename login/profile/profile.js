@@ -4,6 +4,7 @@ const apellidosP = document.getElementById("apellidosP");
 const fechaNacimientoP = document.getElementById("fecha-nacimiento");
 const celularP = document.getElementById("celular");
 const tituloH3 = document.getElementById("titulo");
+const cerrarSesionButton = document.getElementById("cerrarSesionButton");
 
 const correoElectronico = window.localStorage.getItem("correoElectronico");
 const token = window.localStorage.getItem("token");
@@ -37,4 +38,8 @@ async function obtenerUsuario(correoElectronico, token){
     apellidosP.innerHTML += " " + respuestaJSON.apellidoPaterno + " " + respuestaJSON.apellidoMaterno;
     fechaNacimientoP.innerHTML += " " + respuestaJSON.fechaNacimiento;
     celularP.innerHTML += " " + respuestaJSON.celular;
+}
+
+cerrarSesionButton.onclick = function(){
+    console.log("como estas");
 }

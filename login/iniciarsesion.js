@@ -3,6 +3,8 @@ const contrasenaInput = document.getElementById('contrasenaInput');
 const iniciarSesionButton = document.getElementById("iniciarSesionButton");
 const mensajeroP = document.getElementById('mensajero');
 
+
+
 iniciarSesionButton.onclick = async function(){
     const contrasenaCifrada = await hash( correoElectronicoInput.value + contrasenaInput.value);
 
@@ -35,9 +37,6 @@ async function hash(input){
 }
 
 async function iniciarSesion(correoElectronico, contrasenaCifrada){
-
-   
-
 
 
     const body = {
