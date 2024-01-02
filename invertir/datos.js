@@ -20,9 +20,7 @@ const numeroVerificacionIngresado = document.getElementById("numeroVerificacion"
 const mensajero = document.getElementById("mensajero");
 
 async function myFunction(){
-    if (
-        validadEntradas() 
-    ) {
+    if (validarEntradas()) {
         const correoElectronico = correoElectronicoInput.value;
 
         const respuesta = await enviarCorreoConfirmacion(correoElectronico);
@@ -58,6 +56,7 @@ async function myFunction(){
                     console.log(codigoRespuestaRegistroDatos);
                     
                     if (codigoRespuestaRegistroDatos == 201) {
+                        window.localStorage.setItem("correoElectronico", correoElectronicoInput.value);
                         setTimeout(()=>{
                             window.location.href = "direccion.html"
                         },1000 * 2);
@@ -74,7 +73,7 @@ async function myFunction(){
     }
 }
 
-function validadEntradas(){
+function validarEntradas(){
     if (correoElectronico.checkValidity() &&
         nombres.checkValidity() &&
         apellidoPaterno.checkValidity() &&
