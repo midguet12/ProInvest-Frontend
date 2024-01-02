@@ -75,33 +75,34 @@
     <div id="encabezadoDatosPersonales">
         <p>4. Documentos</p>
     </div>
-    <form onsubmit="return false">
-        <div class="grid-container">
+        <form id="documentos" action="http://localhost:3000/cargardocumento" method="POST" enctype="multipart/form-data">
+            <div class="grid-container">
 
-            <div class="grid-item">
-                <p>CURP:</p>
-            </div>
-            <div class="grid-item">
-                <input type="file" id="curp" accept=".pdf" required>
-            </div>
+                <input id="correoElectronicoInput" name="correoElectronico" type="text" style="display: none;">
 
-            <div class="grid-item">
-                <p>Identificacion oficial:</p>
-            </div>
-            <div class="grid-item">
-                <input type="file" id="identificacionOficial" accept=".pdf" required>
-            </div>
-            
-            <div class="grid-item boton">
-                <button id="siguienteButton" class="btn btn-primary" onclick="myFunction()">Siguiente</button>
-                <p id="mensajero"></p>
-            </div>
-            <div>
+                <div class="grid-item">
+                    <p>CURP:</p>
+                </div>
+                <div class="grid-item">
+                    <input name="curp" type="file" id="curp" accept=".pdf" required>
+                </div>
+
+                <div class="grid-item">
+                    <p>Identificacion oficial:</p>
+                </div>
+                <div class="grid-item">
+                    <input name="identificacionOficial" type="file" id="identificacionOficial" accept=".pdf" required>
+                </div>
                 
+                <div class="grid-item boton">
+                    <button id="siguienteButton" class="btn btn-primary" type="submit" >Siguiente</button>
+                    <p id="mensajero"></p>
+                </div>
+                    
             </div>
         </form>
         
-      </div>
+    </div>
     
 
 </body>

@@ -1,7 +1,9 @@
+
 const curp = document.getElementById("curp");
 const identificacionOficial = document.getElementById("identificacionOficial");
+const correoElectronicoInput = document.getElementById("correoElectronicoInput");
 
-function myFunction(){
-    console.log(curp.value);
-    console.log(identificacionOficial.value)
-}
+const correoElectronico = window.localStorage.getItem("correoElectronico");
+correoElectronicoInput.value = correoElectronico;
+
+

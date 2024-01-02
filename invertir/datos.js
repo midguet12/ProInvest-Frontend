@@ -9,6 +9,7 @@ const profesion = document.getElementById("profesion");
 const empresa = document.getElementById("empresa");
 const celular = document.getElementById("celular");
 
+
 var modal = document.getElementById("myModal");
 var span = document.getElementsByClassName("close")[0];
 
@@ -19,67 +20,48 @@ const numeroVerificacionIngresado = document.getElementById("numeroVerificacion"
 const mensajero = document.getElementById("mensajero");
 
 async function myFunction(){
-    if (correoElectronico.checkValidity() &&
-        nombres.checkValidity() &&
-        apellidoPaterno.checkValidity() &&
-        apellidoMaterno.checkValidity() &&
-        rfc.checkValidity() &&
-        gradoAcademico.checkValidity() &&
-        profesion.checkValidity() &&
-        empresa.checkValidity() &&
-        celular.checkValidity() 
+    if (
+        validadEntradas() 
     ) {
         const correoElectronico = correoElectronicoInput.value;
 
-        const body = {
-            correoElectronico
-        };
-
-        const respuesta = await fetch(urlServidor+"enviarcorreoconfirmacion", {
-            method: "POST",
-            mode: "cors", 
-            cache: "no-cache", 
-            credentials: "same-origin",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            redirect: "follow", 
-            referrerPolicy: "no-referrer", 
-            body: JSON.stringify(body)
-        });
+        const respuesta = await enviarCorreoConfirmacion(correoElectronico);
 
         if (respuesta.status == 201) {
+            modal.style.display = "block";
             let respuestaJSON = await respuesta.json();
 
             console.log("Desplegando modal")
             
             let numeroVerificacionSistema = respuestaJSON.numeroVerificacion;
-            modal.style.display = "block";
+            
 
-            verificarCodigoButton.onclick = function(){
+            verificarCodigoButton.onclick = async function(){
                 if (numeroVerificacionIngresado.value == numeroVerificacionSistema) {
                     console.log("Exitoso");
                     mensajero.style.color = "green"
                     mensajero.innerHTML = "Correo electronico verificado"
-                    try {
-                        window.localStorage.setItem("correoElectronico", correoElectronicoInput.value);
-                        window.localStorage.setItem("nombres", nombres.value);
-                        window.localStorage.setItem("apellidoPaterno", apellidoPaterno.value);
-                        window.localStorage.setItem("apellidoMaterno", apellidoMaterno.value);
-                        window.localStorage.setItem("rfc", rfc.value);
-                        window.localStorage.setItem("fechaNacimiento", fechaNacimiento.value);
-                        window.localStorage.setItem("gradoAcademico", gradoAcademico.value);
-                        window.localStorage.setItem("profesion", profesion.value);
-                        window.localStorage.setItem("empresa", empresa.value);
-                        window.localStorage.setItem("celular", celular.value);
-                    } catch (error) {
-                        console.log(error)
-                    }
                     
+                    let codigoRespuestaRegistroDatos = await enviarDatosPersonales(
+                        correoElectronicoInput.value,
+                        nombres.value,
+                        apellidoPaterno.value,
+                        apellidoMaterno.value,
+                        rfc.value,
+                        fechaNacimiento.value,
+                        gradoAcademico.value,
+                        profesion.value,
+                        empresa.value,
+                        celular.value
+                    );
 
-                    setTimeout(()=>{
-                        window.location.href = "direccion.html"
-                    },1000 * 2);
+                    console.log(codigoRespuestaRegistroDatos);
+                    
+                    if (codigoRespuestaRegistroDatos == 201) {
+                        setTimeout(()=>{
+                            window.location.href = "direccion.html"
+                        },1000 * 2);
+                    }
 
                 } else {
                     console.log("No exitoso");
@@ -92,13 +74,7 @@ async function myFunction(){
     }
 }
 
-span.onclick = function() {
-    modal.style.display = "none";
-}
-
-//const siguienteButton = document.getElementById("siguienteButton");
-/*siguienteButton.addEventListener('click', (event) =>{
-    event.preventDefault();
+function validadEntradas(){
     if (correoElectronico.checkValidity() &&
         nombres.checkValidity() &&
         apellidoPaterno.checkValidity() &&
@@ -107,34 +83,87 @@ span.onclick = function() {
         gradoAcademico.checkValidity() &&
         profesion.checkValidity() &&
         empresa.checkValidity() &&
-        celular.checkValidity() 
-    ) {
-        console.log("funciona")
+        celular.checkValidity()) 
+    {
+        return true;    
+    } else {
+        return false;
     }
-});*/
-
-/*siguienteButton.onclick = function(){
+}
 
 
-    
-    window.localStorage.setItem("correoElectronico", correoElectronico.value);
-    window.localStorage.setItem("nombres", nombres.value);
-    window.localStorage.setItem("apellidoPaterno", apellidoPaterno.value);
-    window.localStorage.setItem("apellidoMaterno", apellidoMaterno.value);
-    window.localStorage.setItem("rfc", rfc.value);
-    window.localStorage.setItem("fechaNacimiento", fechaNacimiento.value);
-    window.localStorage.setItem("gradoAcademico", gradoAcademico.value);
-    window.localStorage.setItem("profesion", profesion.value);
-    window.localStorage.setItem("empresa", empresa.value);
-    window.localStorage.celular("celular", celular.value);
+async function enviarCorreoConfirmacion(correoElectronico){
+    const body = {
+        correoElectronico
+    };
 
+    const respuesta = await fetch(urlServidor+"enviarcorreoconfirmacion", {
+        method: "POST",
+        mode: "cors", 
+        cache: "no-cache", 
+        credentials: "same-origin",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        redirect: "follow", 
+        referrerPolicy: "no-referrer", 
+        body: JSON.stringify(body)
+    });
 
+    console.log(respuesta.status);
+    return respuesta;
+}
 
+async function enviarDatosPersonales(
+    correoElectronico,
+    nombres,
+    apellidoPaterno,
+    apellidoMaterno,
+    rfc,
+    fechaNacimiento,
+    gradoAcademico,
+    profesion,
+    empresa,
+    celular
+){
 
-}*/
+    const body = {
+        correoElectronico,
+        nombres,
+        apellidoPaterno,
+        apellidoMaterno,
+        rfc,
+        fechaNacimiento,
+        gradoAcademico,
+        profesion,
+        empresa,
+        celular
+    };
 
+    try {
+        const respuesta = await fetch(urlServidor + 'solicitudinversion/datospersonales', {
+            method: "POST",
+            mode: "cors", 
+            cache: "no-cache", 
+            credentials: "same-origin",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            redirect: "follow", 
+            referrerPolicy: "no-referrer", 
+            body: JSON.stringify(body)
+        });
 
+        console.log(respuesta.status);
+        return respuesta.status;
+    } catch (error) {
+        console.log("Error enviando datos personales " + error);
+    }
+}
 
+span.onclick = function() {
+    modal.style.display = "none";
+}
 
 
 

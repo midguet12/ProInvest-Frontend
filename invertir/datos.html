@@ -75,14 +75,14 @@
     <div id="encabezadoDatosPersonales">
         <p>1. Datos personales</p>
     </div>
-    <form onsubmit="return false">
+    <form id="datosPersonales" onsubmit="return false">
         <div class="grid-container">
             <div class="grid-item">
                 <p>Correo Electronico:</p>
             </div>
 
             <div class="grid-item">
-                <input type="text" id="correoElectronico"
+                <input name="correoElectronico" type="text" id="correoElectronico"
                 required 
                 pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
                 >
@@ -93,42 +93,42 @@
             </div>
 
             <div class="grid-item">
-                <input type="text" id="nombres" required>
+                <input name="nombres" type="text" id="nombres" required>
+            </div>
+
+            <div class="grid-item">
+                <p>Apellido Paterno:</p>
+            </div>
+            <div class="grid-item">
+                <input name="apellidoPaterno" type="text" id="apellidoPaterno" required>
             </div>
 
             <div class="grid-item">
                 <p>Apellido Materno:</p>
             </div>
             <div class="grid-item">
-                <input type="text" id="apellidoPaterno" required>
-            </div>
-
-            <div class="grid-item">
-                <p>Apellido Materno:</p>
-            </div>
-            <div class="grid-item">
-                <input type="text" id="apellidoMaterno" required>
+                <input name="apellidoMaterno" type="text" id="apellidoMaterno" required>
             </div>
             
             <div class="grid-item">
                 <p>RFC:</p>
             </div>
             <div class="grid-item">
-                <input type="text" id="rfc" required>
+                <input name="rfc" type="text" id="rfc" required>
             </div>
 
             <div class="grid-item">
                 <p>Fecha de nacimiento:</p>
             </div>
             <div class="grid-item">
-                <input type="date" value="2006-01-01" max="2006-01-01" id="fechaNacimiento" required>
+                <input name="fechaNacimiento" type="date" value="2006-01-01" max="2006-01-01" id="fechaNacimiento" required>
             </div>
 
             <div class="grid-item">
                 <p>Grado academico:</p>
             </div>
             <div class="grid-item">
-                <select name="select" id="gradoAcademico">
+                <select name="gradoAcademico" id="gradoAcademico">
                     <option value="Bachillerato" selected>Bachillerato</option>
                     <option value="Licenciatura">Licenciatura</option>
                     <option value="Maestria">Maestria</option>
@@ -140,21 +140,21 @@
                 <p>Profesion:</p>
             </div>
             <div class="grid-item">
-                <input type="text" id="profesion" required>
+                <input name="profesion" type="text" id="profesion" required>
             </div>
 
             <div class="grid-item">
                 <p>Empresa/Institucion:</p>
             </div>
             <div class="grid-item">
-                <input type="text" id="empresa" required>
+                <input name="empresa" type="text" id="empresa" required>
             </div>
 
             <div class="grid-item">
                 <p>Celular:</p>
             </div>
             <div class="grid-item">
-                <input type="text" id="celular" required pattern="[789][0-9]{9}">
+                <input name="celular" type="text" id="celular" required pattern="[789][0-9]{9}">
             </div>
 
             <div class="grid-item boton">
