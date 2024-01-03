@@ -75,7 +75,7 @@
     <div id="encabezadoDatosPersonales">
         <p>4. Documentos</p>
     </div>
-        <form id="documentos" action="http://localhost:3000/cargardocumento" method="POST" enctype="multipart/form-data">
+        <form id="documentos" enctype="multipart/form-data" onsubmit="return false">
             <div class="grid-container">
 
                 <input id="correoElectronicoInput" name="correoElectronico" type="text" style="display: none;">
@@ -95,7 +95,7 @@
                 </div>
                 
                 <div class="grid-item boton">
-                    <button id="siguienteButton" class="btn btn-primary" type="submit" >Siguiente</button>
+                    <button id="siguienteButton" class="btn btn-primary" type="submit" onclick="myFunction()" >Siguiente</button>
                     <p id="mensajero"></p>
                 </div>
                     
