@@ -9,3 +9,14 @@ export async function registrarOrigenFondo(nuevoOrigenFondo){
     };
     return await fetch(url, peticion);
 }
+
+export async function obtenerOrigenesDeFondos() {
+    const url='http://localhost:3000/origenesFondos';
+    const peticion = {
+        method: "GET",
+        headers: {
+            "Content-type": "application/json",
+        },
+    };
+    return await fetch(url, peticion);
+}

@@ -1,11 +1,12 @@
 export async function obtenerTiposInversion() {
     const url='http://localhost:3000/tiposInversion';
-    const respuesta = await fetch(url);
-    const tiposInversion = await respuesta.json();
-
-    let mapaTiposInversion = {};
-    tiposInversion.forEach(tipo => mapaTiposInversion[tipo.nombre] = tipo);
-    return mapaTiposInversion;
+    const peticion = {
+        method: "GET",
+        headers: {
+            "Content-type": "application/json",
+        },
+    };
+    return await fetch(url, peticion);
 }
 
 
