@@ -14,4 +14,5 @@ addEventListener("submit", async () => {
 
 (function () {
     validar();
+
 })();
