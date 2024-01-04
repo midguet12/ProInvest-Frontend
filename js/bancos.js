@@ -60,4 +60,5 @@ addEventListener("submit", async () => {
 
 (function () {
     validar();
+    //test
 })();
