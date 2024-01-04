@@ -10,25 +10,25 @@ const tablaCuerpo = document.getElementById("tablaCuerpo");
 let bancos = await (await obtenerBancos()).json();
 let idBancoSeleccionado = 0;
 
-// Código para popular la tabla de ejemplo: --alejandro
-// let i = 0;
-// bancos.forEach( item => {
-//     const botonEditar = document.createElement('button');
-//     botonEditar.classList.add("btn", "btn-primary");
-//     botonEditar.setAttribute("data-bs-toggle", "modal");
-//     botonEditar.setAttribute("data-bs-target", "#exampleModal");
-//     botonEditar.id = i;
-//     botonEditar.innerHTML = "<i class=\"intangible fa-solid fa-pen\"></i>\n";
-//     botonEditar.addEventListener("click", (e) => prepararFormularioActualizar(bancos[e.target.id]));
-//
-//     let fila = tablaCuerpo.insertRow();
-//     let columna = fila.insertCell(0)
-//     columna.innerHTML = i++;
-//     let nombre = fila.insertCell(1);
-//     nombre.innerHTML = item.nombre ;
-//     let editar = fila.insertCell(2);
-//     editar.appendChild(botonEditar);
-// })
+
+let i = 0;
+bancos.forEach( item => {
+    const botonEditar = document.createElement('button');
+    botonEditar.classList.add("btn", "btn-primary");
+    botonEditar.setAttribute("data-bs-toggle", "modal");
+    botonEditar.setAttribute("data-bs-target", "#exampleModal");
+    botonEditar.id = i;
+    botonEditar.innerHTML = "<i class=\"intangible fa-solid fa-pen\"></i>\n";
+    botonEditar.addEventListener("click", (e) => prepararFormularioActualizar(bancos[e.target.id]));
+
+    let fila = tablaCuerpo.insertRow();
+    let numeroBanco = fila.insertCell(0)
+    numeroBanco.innerHTML = i++;
+    let nombre = fila.insertCell(1);
+    nombre.innerHTML = item.nombre ;
+    let editar = fila.insertCell(2);
+    editar.appendChild(botonEditar);
+})
 function prepararFormularioActualizar(bancoSeleccionado){
     idBancoSeleccionado = bancoSeleccionado.idBanco;
     modalForm.setAttribute("method", "PUT")
