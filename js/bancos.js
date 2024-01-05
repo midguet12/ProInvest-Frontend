@@ -50,9 +50,12 @@ addEventListener("submit", async () => {
         "idBanco": idBancoSeleccionado,
         "nombre": nombreNuevoBanco.value,
     }
-    if (modalForm.getAttribute("method") === "POST") {
+    console.log(modalForm)
+    if (modalForm.getAttribute("method") === "post") {
+        console.log("POST")
         respuesta = await registrarBancos(banco);
     } else {
+        console.log("PUT")
         respuesta = await actualizarBancos(banco);
     }
     manejarRespuesta(respuesta);
