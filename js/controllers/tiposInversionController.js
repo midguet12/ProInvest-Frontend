@@ -1,5 +1,5 @@
 export async function obtenerTiposInversion() {
-    const url='http://localhost:3000/tiposInversion';
+    const url='http://themaisonbleue.com:4500/tiposInversion';
     const peticion = {
         method: "GET",
         headers: {
@@ -11,7 +11,7 @@ export async function obtenerTiposInversion() {
 
 
 export async function registrarTiposInversion(nuevoTipo){
-    const url='http://localhost:3000/tiposInversion';
+    const url='http://themaisonbleue.com:4500/tiposInversion';
     const peticion = {
         method: "POST",
         headers: {
@@ -24,7 +24,7 @@ export async function registrarTiposInversion(nuevoTipo){
 
 export async function actualizarTiposInversion(tipoInversion){
     
-    const url='http://localhost:3000/tiposInversion';
+    const url='http://themaisonbleue.com:4500/tiposInversion';
     const peticion = {
         method: "PATCH",
         headers: {

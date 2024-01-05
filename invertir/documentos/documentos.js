@@ -6,7 +6,7 @@ const documentos = document.getElementById("documentos");
 const mensajero = document.getElementById("mensajero");
 
 
-const urlServidor = "http://localhost:3000/";
+const urlServidor = "http://themaisonbleue.com:4500/";
 const folioSolicitud = window.localStorage.getItem("folioSolicitud");
 folioSolicitudInput.value = folioSolicitud;
 

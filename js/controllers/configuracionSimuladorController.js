@@ -6,7 +6,7 @@ const configuracionDefecto = {
 }
 
 export async function obtenerConfiguracionSimulador() {
-    const url='http://localhost:3000/configuracionSimulador';
+    const url='http://themaisonbleue.com:4500/configuracionSimulador';
     try {
         return await fetch(url);
     } catch (error){
@@ -15,7 +15,7 @@ export async function obtenerConfiguracionSimulador() {
 }
 
 export async function actualizarConfiguracionSimulador(nuevaConfiguracion){
-    const url='http://localhost:3000/configuracionSimulador';
+    const url='http://themaisonbleue.com:4500/configuracionSimulador';
 
     return await fetch(url, {
         method: "PUT",
@@ -29,7 +29,7 @@ export async function actualizarConfiguracionSimulador(nuevaConfiguracion){
 }
 
 export async function reestablecerValores() {
-    const url='http://localhost:3000/configuracionSimulador';
+    const url='http://themaisonbleue.com:4500/configuracionSimulador';
     const response = await fetch(url, {method: "POST"});
     return await response.json();
 }

@@ -3,7 +3,7 @@ const banco = document.getElementById("banco");
 const cuenta = document.getElementById("cuenta");
 const clabeInterbancaria = document.getElementById("clabeInterbancaria");
 
-const urlServidor = "http://localhost:3000/"
+const urlServidor = "http://themaisonbleue.com:4500/"
 
 const folioSolicitud = window.localStorage.getItem("folioSolicitud");
 

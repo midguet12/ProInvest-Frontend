@@ -13,7 +13,7 @@ const celular = document.getElementById("celular");
 const modal = document.getElementById("myModal");
 const span = document.getElementsByClassName("close")[0];
 
-const urlServidor = "http://localhost:3000/"
+const urlServidor = "http://themaisonbleue.com:4500/"
 
 const verificarCodigoButton = document.getElementById("verificarCodigo");
 const numeroVerificacionIngresado = document.getElementById("numeroVerificacion");

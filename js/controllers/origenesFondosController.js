@@ -1,5 +1,5 @@
 export async function registrarOrigenFondo(nuevoOrigenFondo){
-    const url='http://localhost:3000/origenesFondos';
+    const url='http://themaisonbleue.com:4500/origenesFondos';
     const peticion = {
         method: "POST",
         headers: {
@@ -11,7 +11,7 @@ export async function registrarOrigenFondo(nuevoOrigenFondo){
 }
 
 export async function obtenerOrigenesDeFondos() {
-    const url='http://localhost:3000/origenesFondos';
+    const url='http://themaisonbleue.com:4500/origenesFondos';
     const peticion = {
         method: "GET",
         headers: {
@@ -23,7 +23,7 @@ export async function obtenerOrigenesDeFondos() {
 
 export async function actualizarOrigenFondo(origenFondo){
     
-    const url='http://localhost:3000/origenesFondos';
+    const url='http://themaisonbleue.com:4500/origenesFondos';
     const peticion = {
         method: "PATCH",
         headers: {

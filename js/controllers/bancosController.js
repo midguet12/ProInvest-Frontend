@@ -1,5 +1,5 @@
 export async function registrarBancos(nuevoBanco){
-    const url='http://localhost:3000/bancos';
+    const url='"http://themaisonbleue.com:4500/bancos';
     const peticion = {
         method: "POST",
         headers: {
@@ -11,7 +11,7 @@ export async function registrarBancos(nuevoBanco){
 }
 
 export async function actualizarBancos(nuevoBanco){
-    const url='http://localhost:3000/bancos';
+    const url='"http://themaisonbleue.com:4500/bancos';
     const peticion = {
         method: "PUT",
         headers: {
@@ -23,7 +23,7 @@ export async function actualizarBancos(nuevoBanco){
 }
 
 export async function obtenerBancos(){
-    const url='http://localhost:3000/bancos';
+    const url='http://themaisonbleue.com:4500/bancos';
     const peticion = {
         method: "GET",
         headers: {

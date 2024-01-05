@@ -39,7 +39,7 @@ const folioSolicitud = urlParams.get('foliosolicitud');
 //console.log(variable)
 console.log(folioSolicitud);
 
-const urlServidor = "http://localhost:3000/";
+const urlServidor = "http://themaisonbleue.com:4500/";
 
 llenarInformacion();
 

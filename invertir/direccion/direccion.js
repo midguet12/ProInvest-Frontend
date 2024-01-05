@@ -6,7 +6,7 @@ const estado = document.getElementById("estado");
 const municipio = document.getElementById("municipio");
 const mensajero = document.getElementById("mensajero");
 
-const urlServidor = "http://localhost:3000/"
+const urlServidor = "http://themaisonbleue.com:4500/"
 const correoElectronico = window.localStorage.getItem("correoElectronico");
 const folioSolicitud = window.localStorage.getItem("folioSolicitud");
 
