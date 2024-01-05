@@ -1,6 +1,8 @@
-/*import {validar} from "js/components/validador.js";
-import {manejarRespuesta} from "./components/manejadorMensajes.js";*/
-
+const enviarCambiosButton = document.getElementById("enviarButton");
+const emailError = document.getElementById("email-error");
+const contraseniaError = document.getElementById("contrasenia-error");
+const emailInput = document.getElementById("nuevo-email");
+const contraseniaInput = document.getElementById("nuevo-contrasenia");
 const correoElectronicoP = document.getElementById("correoElectronico");
 const nombresP = document.getElementById("nombreP");
 const apellidosP = document.getElementById("apellidosP");
@@ -47,59 +49,54 @@ cerrarSesionButton.onclick = function(){
     console.log("como estas");
 }
 
-/*addEventListener("submit", async (event) => {
-  
-    const email = document.getElementById("nuevo-email").value;
-    const contrasenia = document.getElementById("nuevo-contrasenia").value;
-   /* const respuesta = await cambiarCredencialesGerente({
-        "email": email,
-        "contraseña": contrasenia,
-    });
 
-    manejarRespuesta(respuesta);
-    console.log(email, contrasenia);
-});
+enviarCambiosButton.onclick = async function(){
+    let validacionEmail = validarEmail(emailInput.value, false);
+    let validacionContrasenia = validarContrasenia(contraseniaInput.value, false);
+    if (validacionContrasenia && validacionEmail) {
+        const contrasenaCifrada = await hash(contraseniaInput.value);
 
-(function () {
-    //validar();
-})();*/
+        //ENVIAR CAMBIOS A LA bd
 
-addEventListener("submit", async (event) => {
-    const emailInput = document.getElementById("nuevo-email");
-    const contraseniaInput = document.getElementById("nuevo-contrasenia");
-
-    const email = emailInput.value;
-    const contrasenia = contraseniaInput.value;
-
-    const emailError = document.getElementById("email-error");
-    const contraseniaError = document.getElementById("contrasenia-error");
-
-    if (!validarEmail(email)) {
-        emailError.innerHTML = "Ingrese un formato de correo electrónico válido.";
-    } else {
-       emailError.innerHTML = "";
     }
-
-    if (!validarContrasenia(contrasenia)) {
-        contraseniaError.innerHTML = "Ingrese una contraseña válida (mínimo 8 caracteres, 1 número, 1 letra y 1 símbolo).";
-    } else {
-        contraseniaError.innerHTML = "";
-    }
-
-    if (!validarEmail(email) || !validarContrasenia(contrasenia)) {
-        event.preventDefault(); // Evita el envío del formulario si hay errores
-        return;
-    }
-
-    // Resto del código (enviar solicitud al servidor, etc.)
-});
-
-function validarEmail(email) {
-    const regex = /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/;
-    return regex.test(email);
 }
 
-function validarContrasenia(contrasenia) {
+async function hash(input){
+    const textAsBuffer = new TextEncoder().encode(input);
+    const hashBuffer = await window.crypto.subtle.digest("SHA-256", textAsBuffer);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    const hash = hashArray
+        .map((item) => item.toString(16).padStart(2, "0"))
+        .join("");
+    return hash;
+}
+
+function validarEmail(email, validacionEmail) {
+    const regex = /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/;
+    validacionEmail = regex.test(email);
+    if (!validacionEmail) {
+        emailInput.style.borderColor = 'red';
+        emailError.innerHTML = "El correo ingresado no es valido";
+        desaparecerMensajes(emailInput, emailError);
+    } 
+   
+    return validacionEmail;
+}
+
+function validarContrasenia(contrasenia, validacionContrasenia) {
     const regex = /^(?=.*[0-9])(?=.*[!@#$%^&*()-_+=])(?=.*[a-zA-Z]).{8,}$/;
-    return regex.test(contrasenia);
+    validacionContrasenia = regex.test(contrasenia);
+    if (!validacionContrasenia) {
+        contraseniaInput.style.borderColor = 'red';
+        contraseniaError.innerHTML = "La contraseña debe tener al menos 8 caracteres, un número, un símbolo y una letra";
+        desaparecerMensajes(contraseniaInput, contraseniaError);
+    } 
+    return validacionContrasenia;
+}
+
+function desaparecerMensajes(elementoInvalido, elementoMensaje) {
+    setTimeout(()=>{
+        elementoInvalido.style.borderColor = 'black';
+        elementoMensaje.innerHTML = " ";
+    },1000 * 3);
 }

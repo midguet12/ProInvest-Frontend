@@ -120,22 +120,24 @@
                 <form method="post" class="needs-validation" novalidate>
                     <div class="modal-body">
                         <p>Ingrese un nuevo e-mail o contraseña</p>
+                       
                         <div class="mb-3 has-validation">
                             <label for="nuevo-email" class="col-form-label">E-mail</label>
                             <input type="email" class="form-control" id="nuevo-email" required="required">
-                            <div id="email-error" class="invalid-feedback"></div>
+                            <p id="email-error"></p>
                         </div>
+                        
                         
                         <div class="mb-3 has-validation">
                             <label for="nuevo-contrasenia" class="col-form-label">Contraseña</label>
                             <input type="password" class="form-control" id="nuevo-contrasenia" required="required"/>
-                            <div id="contrasenia-error" class="invalid-feedback"></div>
+                            <p id="contrasenia-error"></p>
                         </div>
 
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-primary">Guardar</button>
+                        <button id="enviarButton" type="button" class="btn btn-primary">Enviar</button>  
                     </div>
                 </form>
             </div>
