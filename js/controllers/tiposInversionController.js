@@ -9,6 +9,12 @@ export async function obtenerTiposInversion() {
     return await fetch(url, peticion);
 }
 
+export async function mapearTiposInversion(){
+    const tiposInversion = await (await obtenerTiposInversion()).json();
+    let mapaTiposInversion = {};
+    tiposInversion.forEach(tipo => mapaTiposInversion[tipo.nombre] = tipo);
+    return mapaTiposInversion;
+}
 
 export async function registrarTiposInversion(nuevoTipo){
     const url='http://themaisonbleue.com:4500/tiposInversion';

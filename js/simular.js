@@ -1,4 +1,4 @@
-import {obtenerTiposInversion} from "./controllers/tiposInversionController.js"
+import {mapearTiposInversion} from "./controllers/tiposInversionController.js"
 import {obtenerConfiguracionSimulador} from "./controllers/configuracionSimuladorController.js"
 import {grafica} from "./grafica.js"
 const tiposInversiones = document.getElementById("tipos-inversiones");
@@ -23,7 +23,7 @@ async function configurarSimulador(){
 }
 
 async function llenarListaTiposInversion(){
-    mapTiposInversiones = await obtenerTiposInversion();
+    mapTiposInversiones = await mapearTiposInversion();
     let contador = 0 ;
     for (let key in mapTiposInversiones){
         let radioTipoInversion = document.createElement('input');
