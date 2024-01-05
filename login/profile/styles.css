@@ -24,3 +24,11 @@
 	cursor: pointer;
 	outline: inherit;
 }
+
+#contrasenia-error {
+    color: red;
+}
+
+#email-error {
+    color: red;
+}
