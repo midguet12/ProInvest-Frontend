@@ -7,17 +7,18 @@ const municipio = document.getElementById("municipio");
 const mensajero = document.getElementById("mensajero");
 
 const urlServidor = "http://localhost:3000/"
+const correoElectronico = window.localStorage.getItem("correoElectronico");
+const folioSolicitud = window.localStorage.getItem("folioSolicitud");
+
+console.log(correoElectronico);
+console.log(folioSolicitud);
 
 async function myFunction(){
     
-
     if (validarEntradas()){
-
-        //let correoElectronico = window.localStorage.getItem("correoElectronico");
-        const correoElectronico = "midguet12@hotmail.com";
         
         let codigoRespuestaRegistroDireccion = await enviarDireccion(
-            correoElectronico,
+            folioSolicitud,
             numeroExterior.value,
             numeroInterior.value,
             codigoPostal.value,
@@ -31,7 +32,7 @@ async function myFunction(){
             mensajero.innerHTML = "Guardando datos de domicilio...";
             
             setTimeout(()=>{
-                window.location.href = "bancaria.html";
+                window.location.href = "../bancaria/index.html";
             },1000 * 1);
 
         }
@@ -53,7 +54,7 @@ function validarEntradas(){
 }
 
 async function enviarDireccion(
-    correoElectronico,
+    folioSolicitud,
     numeroExterior,
     numeroInterior,
     codigoPostal,
@@ -63,7 +64,7 @@ async function enviarDireccion(
 ){
 
     const body = {
-        correoElectronico,
+        folioSolicitud,
         numeroExterior,
         numeroInterior,
         codigoPostal,

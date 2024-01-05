@@ -10,8 +10,8 @@ const empresa = document.getElementById("empresa");
 const celular = document.getElementById("celular");
 
 
-var modal = document.getElementById("myModal");
-var span = document.getElementsByClassName("close")[0];
+const modal = document.getElementById("myModal");
+const span = document.getElementsByClassName("close")[0];
 
 const urlServidor = "http://localhost:3000/"
 
@@ -27,20 +27,19 @@ async function myFunction(){
 
         if (respuesta.status == 201) {
             modal.style.display = "block";
-            let respuestaJSON = await respuesta.json();
+            const respuestaJSON = await respuesta.json();
 
             console.log("Desplegando modal")
             
-            let numeroVerificacionSistema = respuestaJSON.numeroVerificacion;
+            const numeroVerificacionSistema = respuestaJSON.numeroVerificacion;
             
-
             verificarCodigoButton.onclick = async function(){
                 if (numeroVerificacionIngresado.value == numeroVerificacionSistema) {
                     console.log("Exitoso");
                     mensajero.style.color = "green"
                     mensajero.innerHTML = "Correo electronico verificado"
                     
-                    let codigoRespuestaRegistroDatos = await enviarDatosPersonales(
+                    const respuestaRegistroDatos = await enviarDatosPersonales(
                         correoElectronicoInput.value,
                         nombres.value,
                         apellidoPaterno.value,
@@ -53,12 +52,15 @@ async function myFunction(){
                         celular.value
                     );
 
-                    console.log(codigoRespuestaRegistroDatos);
+                    console.log(respuestaRegistroDatos.status);
                     
-                    if (codigoRespuestaRegistroDatos == 201) {
-                        window.localStorage.setItem("correoElectronico", correoElectronicoInput.value);
+                    
+                    if (respuestaRegistroDatos.status == 201) {
+                        const respuestaJSON = await respuestaRegistroDatos.json();
+                        window.localStorage.setItem("correoElectronico", respuestaJSON.correoElectronico);
+                        window.localStorage.setItem("folioSolicitud", respuestaJSON.folioSolicitud);
                         setTimeout(()=>{
-                            window.location.href = "direccion.html"
+                            window.location.href = "../direccion/index.html"
                         },1000 * 2);
                     }
 
@@ -154,7 +156,7 @@ async function enviarDatosPersonales(
         });
 
         console.log(respuesta.status);
-        return respuesta.status;
+        return respuesta;
     } catch (error) {
         console.log("Error enviando datos personales " + error);
     }

@@ -5,18 +5,17 @@ const clabeInterbancaria = document.getElementById("clabeInterbancaria");
 
 const urlServidor = "http://localhost:3000/"
 
+const folioSolicitud = window.localStorage.getItem("folioSolicitud");
+
 const mensajero = document.getElementById("mensajero");
 
 async function myFunction(){
     if (validarEntradas()){
         try {
-            window.localStorage.setItem("origenFondos", origenFondos.value);
+            /*window.localStorage.setItem("origenFondos", origenFondos.value);
             window.localStorage.setItem("banco", banco.value);
             window.localStorage.setItem("cuenta", cuenta.value);
-            window.localStorage.setItem("clabeInterbancaria", clabeInterbancaria.value);
-
-            //let folioSolicitud = window.localStorage.getItem("folioSolicitud");
-            let folioSolicitud = 1;
+            window.localStorage.setItem("clabeInterbancaria", clabeInterbancaria.value);*/
 
             let codigoRespuestaRegistroDatosBancarios = await enviarDatosBancarios(
                 folioSolicitud,
@@ -31,7 +30,7 @@ async function myFunction(){
                 mensajero.innerHTML = "Guardando datos bancarios...";
 
                 setTimeout(()=>{
-                    window.location.href = "documentos.html";
+                    window.location.href = "../documentos/index.html";
                 },1000 * 1);
             }
 

@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invertir - ProInvest</title>
+
+    <link rel="stylesheet" href="../../css/site.css">
+    <link rel="stylesheet" href="styles.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!--script src="js/components/bootstrap-input-spinner/bootstrap-input-spinner.js"></script>-->
+
+    <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/564645be40.js" crossorigin="anonymous"></script>
+    <script defer src="resumen.js"></script>
+    <script defer src="firma.js"></script>
+
+</head>
+<body>
+    <nav>
+        <ul class="navbar-option-list ">
+            <li class="navbar-brand">
+                <a class="" href="#">ProInvest</a>
+            </li>
+            <li class="navbar-option nav-item">
+    
+                <a href="#">
+                    <i class="fa-solid fa-chart-simple"></i>
+                    <p>Simular</p>
+                </a>
+            </li>
+            <li class="navbar-option nav-item">
+                <a href="comparar.html">
+                    <i class="fa-solid fa-scale-balanced"></i>
+                    <p>Comparar</p>
+                </a>
+            </li>
+            <li class="navbar-option nav-item">
+                <a class="pestana-activa" href="../datospersonales/index.html">
+                    <i class="fa-solid fa-piggy-bank"></i>
+                    <p>Invertir</p>
+                </a>
+            </li>
+            <li class="navbar-option nav-item">
+                <a href="#">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <p>Buscar</p>
+                </a>
+            </li>
+            <li class="navbar-option nav-item">
+                <a href="../../login/index.html">
+                    <i class="bi bi-person-fill"></i>
+                    <p>Iniciar sesión</p>
+                </a>
+            </li>
+            
+            
+        </ul>
+    </nav>
+
+    <div class="crop desktop-only">
+        <img src="../../img/inversion.jpg" alt="Moneda">
+    </div>
+
+    <div class="descripcion desktop-only">
+        <h3 id="titulo" class="titulo">Solicitar inversión</h3>
+    </div>
+
+    <div id="encabezadoSeccion">
+        <p>5. Resumen</p>
+    </div>
+
+    <div id="datosPersonales">
+        <div class="grid-container-resumen">
+
+            <!--Datos personales-->
+            <div class="grid-item encabezadoFormulario">
+                <p>Datos personales</p>
+            </div>
+
+            <div class="grid-item">
+                <p>Correo Electronico:</p>
+            </div>
+
+            <div class="grid-item">
+                <p id="correoElectronico"></p>
+            </div>
+
+            <div class="grid-item">
+                <p>Nombre(s):</p>
+            </div>
+
+            <div class="grid-item">
+                <p id="nombres"></p>
+            </div>
+
+            <div class="grid-item">
+                <p>Apellido Paterno:</p>
+            </div>
+            <div class="grid-item">
+                <p id="apellidoPaterno"></p>
+            </div>
+
+            <div class="grid-item">
+                <p>Apellido Materno:</p>
+            </div>
+            <div class="grid-item">
+                <p id="apellidoMaterno"></p>
+            </div>
+            
+            <div class="grid-item">
+                <p>RFC:</p>
+            </div>
+            <div class="grid-item">
+                <p id="rfc"></p>
+            </div>
+
+            <div class="grid-item">
+                <p>Fecha de nacimiento:</p>
+            </div>
+            <div class="grid-item">
+                <p id="fechaNacimiento"></p>
+            </div>
+
+            <div class="grid-item">
+                <p>Grado academico:</p>
+            </div>
+            <div class="grid-item">
+                <p id="gradoAcademico"></p>
+            </div>
+
+            <div class="grid-item">
+                <p>Profesion:</p>
+            </div>
+            <div class="grid-item">
+                <p id="profesion"></p>
+            </div>
+
+            <div class="grid-item">
+                <p>Empresa/Institucion:</p>
+            </div>
+            <div class="grid-item">
+                <p id="empresa"></p>
+            </div>
+
+            <div class="grid-item">
+                <p>Celular:</p>
+            </div>
+            <div class="grid-item">
+                <p id="celular"></p>
+            </div>
+
+            <!--Direccion-->
+            <div class="grid-item encabezadoFormulario">
+                <p>Direccion</p>
+            </div>
+            
+            <div class="grid-item">
+                <p>Numero exterior:</p>
+            </div>
+            <div class="grid-item">
+                <p id="numeroExterior"></p>
+            </div>
+
+            <div class="grid-item">
+                <p>Numero interior:</p>
+            </div>
+            <div class="grid-item">
+                <p id="numeroInterior"></p>
+            </div>
+
+            <div class="grid-item">
+                <p>Codigo postal:</p>
+            </div>
+            <div class="grid-item">
+                <p id="codigoPostal"></p>
+            </div>
+
+            <div class="grid-item">
+                <p>Colonia:</p>
+            </div>
+            <div class="grid-item">
+                <p id="colonia"></p>
+            </div>
+            
+            <div class="grid-item">
+                <p>Estado:</p>
+            </div>
+            <div class="grid-item">
+                <p id="estado"></p>
+            </div>    
+
+            <div class="grid-item">
+                <p>Municipio:</p>
+            </div>
+            <div class="grid-item">
+                <p id="municipio"></p>
+            </div>
+
+            <!--Bancaria-->
+            <div class="grid-item encabezadoFormulario">
+                <p>Informacion bancaria</p>
+            </div>
+
+            <div class="grid-item">
+                <p>Origen fondos:</p>
+            </div>
+            <div class="grid-item">
+                <p id="origenFondo"></p>
+            </div>
+
+            <div class="grid-item">
+                <p>Banco:</p>
+            </div>
+            <div class="grid-item">
+                <p id="banco"></p>
+            </div>
+
+            <div class="grid-item">
+                <p>Cuenta:</p>
+            </div>
+            <div class="grid-item">
+                <p id="cuenta"></p>
+            </div>
+            
+            <div class="grid-item">
+                <p>Clabe interbancaria:</p>
+            </div>
+            <div class="grid-item">
+                <p id="clabeInterbancaria"></p>
+            </div>
+
+            
+            <!--Documentos-->
+            <div class="grid-item encabezadoFormulario">
+                <p>Documentos</p>
+            </div>
+
+            <div class="grid-item">
+                <p>CURP:</p>
+            </div>
+            <div class="grid-item">
+                <p id="curp">
+                    <a id="enlaceCurp" href="" target="_blank">CURP</a>
+                </p>
+            </div>
+
+            <div class="grid-item">
+                <p>Identificacion oficial:</p>
+            </div>
+            <div class="grid-item">
+                <p id="curp">
+                    <a id="enlaceIdenficacionOficial" href="" target="_blank">Identificacion oficial</a>
+                </p>
+            </div>
+            
+            <div class="grid-item boton">
+                <button id="siguienteButton" class="btn btn-primary" onclick="myFunction()">Firmar</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content-local">
+            <span class="close">&times;</span>
+            <div class="elementos-modal">
+                <form action="" class="firma-pad-form" method="post">
+                    <h1>Contrato de ProInvest Latinoamerica</h1>
+                    <p>Contrato de solicitud de inversión con la empresa lider mundial en México ProInvest Latinoamerica</p>
+            
+                    <p><strong>Firma</strong></p>
+            
+                    <div class="firma-pad-contenedor texto-centrado">
+                        <canvas class="firma-pad"></canvas>
+                    </div>
+            
+                    <p>
+                        <a href="#" class="boton-limpiar boton-accion">Limpiar</a>
+                        <a href="#" class="boton-imagen boton-accion">Descargar</a>
+                        <a href="" class="boton-contrato boton-accion">Imprimir contrato</a>
+            
+                    </p>
+            
+                    <button class="boton-enviar" type="submit">Enviar</button>
+                    <div class="firma-resultado-contenedor texto-centrado"></div>
+            
+            
+                </form>
+            </div>
+            
+        </div>
+    </div>
+    
+           
+
+</body>
+</html>
+
+<!--
+    "direccion": {
+        "correoElectronico": "midguet12@hotmail.com",
+        "numeroExterior": "9",
+        "numeroInterior": "NA",
+        "codigoPostal": "77517",
+        "colonia": "Villas del mar",
+        "estado": "Quintana Roo",
+        "municipio": "Benito Juarez"
+    }
+}
+-->
