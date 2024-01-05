@@ -160,7 +160,6 @@ li a p{
 
 }
 
-
 .gerencia-botones{
     grid-row: 1;
     display: flex;
@@ -205,6 +204,60 @@ li a p{
 .intangible {
     pointer-events: none;
 }
+
+.perfil-contenido{
+    height: 100%;
+    grid-row: 2;
+    grid-column: 1 / span 3;
+    padding: 100px;
+    display: grid;
+}
+
+.perfil-descripcion{
+    font-size: 1rem;
+    grid-row: 1;
+    grid-column: 1 / span 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-height: 100px;
+}
+
+.perfil-contenido {
+    display: flex;
+    flex-direction: column;
+}
+
+.perfil-datos {
+    margin-bottom: 10px;
+}
+
+.perfil-botones {
+    display: flex;
+    flex-direction: column;
+    height: 12px;
+}
+
+#guardar {
+    width: 6em; /* Ajusta según tus necesidades */
+    height: 3em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 60px;
+}
+
+#guardar .fa-pen {
+    margin-top: 20%;
+    font-size: 70%; 
+}
+
+#guardar p {
+    font-size: 80%; 
+    margin-top: 5px; 
+}
+
 
 @media (min-width: 992px) {
     .desktop-only{
