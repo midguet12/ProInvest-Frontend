@@ -12,7 +12,7 @@ const GROSOR = 2;
 
 form.addEventListener('submit', (e) =>{
     e.preventDefault();
-
+    
     const resultadoContenedor = document.querySelector('.firma-resultado-contenedor');
     const imagenAnterior = document.querySelector('.firma-imagen');
 
@@ -20,6 +20,7 @@ form.addEventListener('submit', (e) =>{
         imagenAnterior.remove();
 
     const imagenURL = canvas.toDataURL();
+    console.log(imagenURL)
     const imagen = document.createElement('img');
 
     imagen.src = imagenURL;
