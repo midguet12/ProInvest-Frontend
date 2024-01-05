@@ -14,10 +14,6 @@ origenesDeFondos.forEach( item => {
     botonEditar.classList.add("btn", "btn-primary");
     botonEditar.setAttribute("data-bs-toggle", "modal");
     botonEditar.setAttribute("data-bs-target", "#modalEdicion");
-
-    //tituloModal.innerHTML = "Editar origen de fondo";
-    //textoModal.innerHTML = "Ingrese los nuevos datos del origen de fondo";
-
     botonEditar.id = item.idOrigenFondo;
     botonEditar.innerHTML = "<i class=\"intangible fa-solid fa-pen\"></i>\n";
     //botonEditar.addEventListener("click", (e) => [funcion actualizar de midguet]));

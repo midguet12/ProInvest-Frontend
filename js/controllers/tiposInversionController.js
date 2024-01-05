@@ -22,3 +22,16 @@ export async function registrarTiposInversion(nuevoTipo){
     return await fetch(url, peticion);
 }
 
+export async function actualizarTiposInversion(tipoInversion){
+    
+    const url='http://localhost:3000/tiposInversion';
+    const peticion = {
+        method: "PATCH",
+        headers: {
+            "Content-type": "application/json",
+        },
+        body: JSON.stringify(tipoInversion)
+    };
+    return await fetch(url, peticion);
+}
+
