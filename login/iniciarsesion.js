@@ -1,3 +1,4 @@
+
 const correoElectronicoInput = document.getElementById('correoElectronicoInput');
 const contrasenaInput = document.getElementById('contrasenaInput');
 const iniciarSesionButton = document.getElementById("iniciarSesionButton");

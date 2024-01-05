@@ -1,3 +1,4 @@
+const modal = new bootstrap.Modal(document.getElementById('exampleModal'));
 const enviarCambiosButton = document.getElementById("enviarButton");
 const emailError = document.getElementById("email-error");
 const contraseniaError = document.getElementById("contrasenia-error");
@@ -54,10 +55,8 @@ enviarCambiosButton.onclick = async function(){
     let validacionEmail = validarEmail(emailInput.value, false);
     let validacionContrasenia = validarContrasenia(contraseniaInput.value, false);
     if (validacionContrasenia && validacionEmail) {
-        const contrasenaCifrada = await hash(contraseniaInput.value);
-
-        //ENVIAR CAMBIOS A LA bd
-
+        const contraseniaCifrada = await hash(contraseniaInput.value);
+        registrarCambios(contraseniaCifrada, emailInput.value);
     }
 }
 
@@ -99,4 +98,36 @@ function desaparecerMensajes(elementoInvalido, elementoMensaje) {
         elementoInvalido.style.borderColor = 'black';
         elementoMensaje.innerHTML = " ";
     },1000 * 3);
+}
+
+async function registrarCambios(contraseniaCifrada, emailNuevo)
+{
+    const correoElectronicoUsuario = window.localStorage.getItem("correoElectronico");
+    if (!correoElectronico) {
+        alert("Hubo un error en el sistema intente de nuevo más tarde");
+    } else {
+        const body = {
+            "id": correoElectronicoUsuario,
+            "correoElectronico": emailNuevo,
+            "contrasenia":contraseniaCifrada,
+        };
+
+        const urlServidor = "http://localhost:3000/actualizarCredenciales";
+        const respuesta = await fetch(urlServidor, {
+            method: "PUT",
+            mode: "cors", 
+            cache: "no-cache", 
+            credentials: "same-origin",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            redirect: "follow", 
+            referrerPolicy: "no-referrer", 
+            body: JSON.stringify(body)
+        });
+
+        let respuestaJSON = await respuesta.json();
+        alert(respuestaJSON.mensaje);
+        modal.hide();
+    }
 }
