@@ -102,12 +102,11 @@ function desaparecerMensajes(elementoInvalido, elementoMensaje) {
 
 async function registrarCambios(contraseniaCifrada, emailNuevo)
 {
-    const correoElectronicoUsuario = window.localStorage.getItem("correoElectronico");
     if (!correoElectronico) {
         alert("Hubo un error en el sistema intente de nuevo más tarde");
     } else {
         const body = {
-            "id": correoElectronicoUsuario,
+            "id": correoElectronico,
             "correoElectronico": emailNuevo,
             "contrasenia":contraseniaCifrada,
         };
