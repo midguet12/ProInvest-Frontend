@@ -1,5 +1,5 @@
 //datos personales
-const folioSolicitud = window.localStorage.getItem("folioSolicitud");
+//const folioSolicitud = window.localStorage.getItem("folioSolicitud");
 //const folioSolicitud = 1;
 const correoElectronico = document.getElementById("correoElectronico");
 const nombres = document.getElementById("nombres");
@@ -33,11 +33,13 @@ const enlaceIdentificacionOficial = document.getElementById("enlaceIdenficacionO
 const modal = document.getElementById("myModal");
 const span = document.getElementsByClassName("close")[0];
 
-
+let queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+const folioSolicitud = urlParams.get('foliosolicitud');
+//console.log(variable)
+console.log(folioSolicitud);
 
 const urlServidor = "http://localhost:3000/";
-
-
 
 llenarInformacion();
 
