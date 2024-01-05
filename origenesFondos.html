@@ -110,12 +110,12 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Nuevo Banco</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Nuevo Origen de Fondo</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form method="post" class="needs-validation" novalidate>
                 <div class="modal-body">
-                        <p>Ingrese los datos del nuevo Banco</p>
+                        <p id="textoInteriorModal">Ingrese los datos del nuevo origen de fondo</p>
                         <div class="mb-3 has-validation">
                             <label for="nombre-nuevo-tipo" class="col-form-label">Nombre</label>
                             <input type="text" class="form-control" id="nombre-nuevo-tipo" pattern="^[a-zA-Z0-9 ]+$" required>
@@ -128,6 +128,34 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                     <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade"  data-bs-backdrop="static"  id="modalEdicion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Nuevo Origen de Fondo</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="post" class="needs-validation" novalidate>
+                <div class="modal-body">
+                        <p id="textoInteriorModal">Ingrese el nuevo nombre del origen de fondo</p>
+                        <div class="mb-3 has-validation">
+                            <label for="nombre-nuevo-tipo" class="col-form-label">Nombre</label>
+                            <input type="text" class="form-control" id="nombreActualizacion" pattern="^[a-zA-Z0-9 ]+$" required>
+                            <div class="invalid-feedback">
+                                Por favor ingrese un valor que sólo tenga letras y/o números.
+                            </div>
+                        </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button id="actualizar" type="submit" class="btn btn-primary">Guardar</button>
                 </div>
             </form>
         </div>
